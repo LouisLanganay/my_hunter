@@ -8,7 +8,8 @@
 include Makefile_colors.mk
 
 PROJECT_FILES = 	src/functions/create_window.c		\
-					src/functions/destroy_window.c
+					src/functions/destroy_window.c		\
+					src/events/close_window.c
 
 SRC	=	lib/my/my_compute_power_rec.c		\
 		lib/my/my_compute_square_root.c	\

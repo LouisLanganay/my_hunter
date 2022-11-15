@@ -17,7 +17,7 @@ void create_window(csfml_struct *csfml_options)
     while (sfRenderWindow_isOpen(csfml_options->window)) {
         sfRenderWindow_pollEvent(csfml_options->window, &csfml_options->event);
         if (csfml_options->event.type == sfEvtClosed)
-            sfRenderWindow_close(csfml_options->window);
+            close_window(csfml_options);
         sfRenderWindow_clear(csfml_options->window, sfBlack);
         sfRenderWindow_drawSprite(csfml_options->window, csfml_options->sprite,
         NULL);
