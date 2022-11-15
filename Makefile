@@ -9,6 +9,7 @@ include Makefile_colors.mk
 
 PROJECT_FILES = 	src/functions/create_window.c		\
 					src/functions/destroy_window.c		\
+					src/functions/move_rect.c			\
 					src/events/close_window.c			\
 					src/events/handle_events.c			\
 					src/events/mouse_click.c

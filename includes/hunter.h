@@ -18,7 +18,10 @@
     #include <math.h>
 
     typedef struct csfml_struct {
+        int count_fps;
+        int duck_speed;
         sfEvent event;
+        sfIntRect rect;
         sfClock* clock;
         sfVideoMode mode;
         sfSprite* sprite;
@@ -35,5 +38,7 @@
     void handle_events(csfml_struct *csfml_options);
     
     void mouse_click_left(csfml_struct *csfml_options);
+
+    void move_rect(csfml_struct *csfml_options);
     
 #endif
