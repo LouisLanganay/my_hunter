@@ -16,6 +16,7 @@ csfml_struct init_struct(csfml_struct *csfml_options)
     csfml_options->texture = sfTexture_createFromFile("./assets/image.png",
     NULL);
     csfml_options->sprite = sfSprite_create();
+    csfml_options->clock = sfClock_create();
     csfml_options->event;
 }
 

@@ -9,7 +9,9 @@ include Makefile_colors.mk
 
 PROJECT_FILES = 	src/functions/create_window.c		\
 					src/functions/destroy_window.c		\
-					src/events/close_window.c
+					src/events/close_window.c			\
+					src/events/handle_events.c			\
+					src/events/mouse_click.c
 
 SRC	=	lib/my/my_compute_power_rec.c		\
 		lib/my/my_compute_square_root.c	\
@@ -82,7 +84,7 @@ NAME			=	libmy.a
 
 FILES			=	$(shell find . \( -name '*~' 	\
 					-o -name '*.gcda' -o -name '*.gcno'		\
-					-o -name 'unit_tests' -o -name 'main' \) )
+					-o -name 'unit_tests' -o -name 'hunter' \) )
 
 PATH_INCLUDE	=	includes
 
@@ -113,11 +115,11 @@ run_tests: unit_tests
 	gcovr
 
 main:
-	gcc -o main ${PATH_MAIN} \
+	gcc -o hunter ${PATH_MAIN} \
 	${PROJECT_FILES} -I${PATH_INCLUDE} -L${PATH_LIB} -l${LIB_NAME} \
-	-l csfml-window -l csfml-graphics
+	-l csfml-window -l csfml-graphics -l csfml-system
 	@echo -e "${_GREEN}[OK]${_END} Compiled"
-	./main
+	./hunter
 
 clean:
 	rm -f $(OBJ)
