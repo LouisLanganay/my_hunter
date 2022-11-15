@@ -7,8 +7,6 @@
 
 #include <stdarg.h>
 
-#include "framebuffer.h"
-
 #ifndef _MY_H__
     #define _MY_H__
 
@@ -147,16 +145,5 @@
     int condition_g(const char *format, va_list list, int i);
 
     int condition_b(const char *format, va_list list, int i);
-
-    int my_putpixel(framebuffer_t *framebuffer, unsigned int x,
-    unsigned int y, sfColor color);
-
-    void my_framebuffer_destroy(framebuffer_t *framebuffer);
-
-    long long my_putsquare(framebuffer_t *framebuffer, int x1, int y1, int x2,
-    int y2);
-
-    framebuffer_t *my_framebuffer_create(unsigned int width,
-    unsigned int height);
 
 #endif

@@ -1,47 +1,30 @@
 /*
 ** EPITECH PROJECT, 2022
-** bs csfml
+** my_hunter
 ** File description:
-** bs csfml
+** bootstrap
 */
 
-#include <SFML/Graphics.h>
-#include <SFML/Window.h>
-#include <stdio.h>
-#include <stdlib.h>
-
 #include "../includes/my.h"
+#include "../includes/hunter.h"
+
+csfml_struct init_struct(csfml_struct *csfml_options)
+{
+    csfml_options->mode = (sfVideoMode){800, 600, 32};
+    csfml_options->window = sfRenderWindow_create(csfml_options->mode,
+    "SFML window", sfResize | sfClose, 0);
+    csfml_options->texture = sfTexture_createFromFile("./assets/image.png",
+    NULL);
+    csfml_options->sprite = sfSprite_create();
+    csfml_options->event;
+}
 
 int main(void)
 {
-    sfVideoMode mode = {800, 600, 32};
-    sfRenderWindow* window;
-    sfTexture* texture;
-    sfSprite* sprite;
-    sfEvent event;
-    framebuffer_t *framebuffer;
-
-    window = sfRenderWindow_create(mode, "SFML window",
-        sfResize | sfClose, 0);
-    texture = sfTexture_createFromFile("./assets/image.png", NULL);
-    if (!window)
-        return 84;
-    if (!texture)
-        return 84;
-    sprite = sfSprite_create();
-    sfRenderWindow_setFramerateLimit(window, 30);
-    sfSprite_setTexture(sprite, texture, sfTrue);
-    sfSprite_scale(sprite, (sfVector2f){0.1, 0.1});
-    while (sfRenderWindow_isOpen(window)) {
-        sfRenderWindow_pollEvent(window, &event);
-        if (event.type == sfEvtClosed)
-            sfRenderWindow_close(window);
-        sfRenderWindow_clear(window, sfBlack);
-        sfRenderWindow_drawSprite(window, sprite, NULL);
-        sfRenderWindow_display(window);
-    }
-    sfSprite_destroy(sprite);
-    sfTexture_destroy(texture);
-    sfRenderWindow_destroy(window);
+    csfml_struct *csfml_options = malloc(sizeof(csfml_struct));
+    init_struct(csfml_options);
+    create_window(csfml_options);
+    destroy_window(csfml_options);
+    free(csfml_options);
     return 0;
 }

@@ -7,6 +7,9 @@
 
 include Makefile_colors.mk
 
+PROJECT_FILES = 	src/functions/create_window.c		\
+					src/functions/destroy_window.c
+
 SRC	=	lib/my/my_compute_power_rec.c		\
 		lib/my/my_compute_square_root.c	\
 		lib/my/my_contain_alpha.c		\
@@ -56,10 +59,6 @@ SRC	=	lib/my/my_compute_power_rec.c		\
 		lib/my/my_put_nbr_scientific.c		\
 		lib/my/my_e_or_f_flag.c		\
 		lib/my/my_put_nbr_long.c		\
-		lib/my/my_putpixel.c 		\
-		lib/my/my_framebuffer_create.c 	\
-		lib/my/my_framebuffer_destroy.c 	\
-		lib/my/my_putsquare.c			\
 		lib/my/printf/c.c			\
 		lib/my/printf/di.c			\
 		lib/my/printf/f.c			\
@@ -82,7 +81,7 @@ NAME			=	libmy.a
 
 FILES			=	$(shell find . \( -name '*~' 	\
 					-o -name '*.gcda' -o -name '*.gcno'		\
-					-o -name 'unit_tests' -o -name 'exe' \) )
+					-o -name 'unit_tests' -o -name 'main' \) )
 
 PATH_INCLUDE	=	includes
 
@@ -98,10 +97,11 @@ TESTS_FILE		=	my_printf.c
 
 all: 	$(NAME)
 
-$(NAME):	$(OBJ)
+$(NAME): fclean	$(OBJ)
 	ar rc $(NAME) $(OBJ)
 	cp ./lib/my/my.h ${PATH_INCLUDE}
 	make clean
+	make main
 
 unit_tests: fclean all
 	gcc -o unit_tests ${TESTS_FILE} ${PATH_TESTS} --coverage \
@@ -111,8 +111,10 @@ run_tests: unit_tests
 	./unit_tests
 	gcovr
 
-main: fclean all
-	gcc -o main ${PATH_MAIN} -I${PATH_INCLUDE} -L${PATH_LIB} -l${LIB_NAME} -l csfml-window -l csfml-graphics
+main:
+	gcc -o main ${PATH_MAIN} \
+	${PROJECT_FILES} -I${PATH_INCLUDE} -L${PATH_LIB} -l${LIB_NAME} \
+	-l csfml-window -l csfml-graphics
 	@echo -e "${_GREEN}[OK]${_END} Compiled"
 	./main
 

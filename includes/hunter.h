@@ -24,4 +24,8 @@
         sfEvent event;
     } csfml_struct;
 
+    void create_window(csfml_struct *csfml_options);
+
+    void destroy_window(csfml_struct *csfml_options);
+    
 #endif
