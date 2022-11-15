@@ -7,8 +7,12 @@
 
 #include "../../includes/hunter.h"
 
-void mouse_click(csfml_struct *csfml_options)
+void mouse_click_left(csfml_struct *csfml_options)
 {
-    sfVector2i position = sfMouse_getPositionRenderWindow(csfml_options->window);
-    printf("Mouse x=%i y=%i\n", position.x, position.y);
+    sfVector2i pos = sfMouse_getPositionRenderWindow(csfml_options->window);
+    printf("Mouse x=%i y=%i\n", pos.x, pos.y);
+
+    while (csfml_options->event.type == sfEvtMouseButtonPressed) {
+        sfRenderWindow_pollEvent(csfml_options->window, &csfml_options->event);
+    }
 }

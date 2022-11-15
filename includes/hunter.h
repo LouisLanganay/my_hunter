@@ -34,6 +34,6 @@
 
     void handle_events(csfml_struct *csfml_options);
     
-    void mouse_click(csfml_struct *csfml_options);
+    void mouse_click_left(csfml_struct *csfml_options);
     
 #endif
