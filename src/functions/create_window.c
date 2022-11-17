@@ -14,7 +14,12 @@ void set_textures(bird_struct *bird, csfml_struct *csfml_options)
     sfSprite_setTexture(bird->sprite, bird->texture, sfTrue);
     sfSprite_setTextureRect(bird->sprite, bird->rect);
     sfSprite_setPosition(bird->sprite, bird->position);
-    //sfSprite_scale(csfml_options->sprite, (sfVector2f){0.1, 0.1});
+}
+
+void set_background(csfml_struct *csfml_options)
+{
+    sfSprite_setTexture(csfml_options->sprite, csfml_options->texture, sfTrue);
+    sfSprite_setPosition(csfml_options->sprite, (sfVector2f){0, 0});
 }
 
 void create_window(csfml_struct *csfml_options, bird_struct *bird)
@@ -24,6 +29,7 @@ void create_window(csfml_struct *csfml_options, bird_struct *bird)
     if (!csfml_options->window || !bird->texture)
         return;
     sfRenderWindow_setFramerateLimit(csfml_options->window, 60);
+    set_background(csfml_options);
     set_textures(bird, csfml_options);
     while (sfRenderWindow_isOpen(csfml_options->window)) {
         time = sfClock_getElapsedTime(csfml_options->clock);
@@ -34,6 +40,8 @@ void create_window(csfml_struct *csfml_options, bird_struct *bird)
             sfClock_restart(csfml_options->clock);
         }
         sfRenderWindow_clear(csfml_options->window, sfBlack);
+        sfRenderWindow_drawSprite(csfml_options->window, csfml_options->sprite,
+        NULL);
         sfRenderWindow_drawSprite(csfml_options->window, bird->sprite,
         NULL);
         sfRenderWindow_display(csfml_options->window);
