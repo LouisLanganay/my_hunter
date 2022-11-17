@@ -7,35 +7,36 @@
 
 #include "../../includes/hunter.h"
 
-void set_textures(csfml_struct *csfml_options)
+void set_textures(bird_struct *bird, csfml_struct *csfml_options)
 {
-    if (csfml_options->count_fps >= csfml_options->duck_speed)
-        move_rect(csfml_options);
-    sfSprite_setTexture(csfml_options->sprite, csfml_options->texture, sfTrue);
-    sfSprite_setTextureRect(csfml_options->sprite, csfml_options->rect);
-    csfml_options->count_fps++;
+    bird->rect_count += 1;
+    bird_moovment(bird, csfml_options);
+    sfSprite_setTexture(bird->sprite, bird->texture, sfTrue);
+    sfSprite_setTextureRect(bird->sprite, bird->rect);
+    sfSprite_setPosition(bird->sprite, bird->position);
     //sfSprite_scale(csfml_options->sprite, (sfVector2f){0.1, 0.1});
 }
 
-void create_window(csfml_struct *csfml_options)
+void create_window(csfml_struct *csfml_options, bird_struct *bird)
 {
-    float seconds;
     sfTime time;
-    if (!csfml_options->window || !csfml_options->texture)
+    float seconds;
+    if (!csfml_options->window || !bird->texture)
         return;
     sfRenderWindow_setFramerateLimit(csfml_options->window, 60);
+    set_textures(bird, csfml_options);
     while (sfRenderWindow_isOpen(csfml_options->window)) {
         time = sfClock_getElapsedTime(csfml_options->clock);
         seconds = time.microseconds / 1000000.0;
-        handle_events(csfml_options);
-        set_textures(csfml_options);
-
+        if (seconds > 0.01) {
+            handle_events(csfml_options, bird);
+            set_textures(bird, csfml_options);
+            sfClock_restart(csfml_options->clock);
+        }
         sfRenderWindow_clear(csfml_options->window, sfBlack);
-        sfRenderWindow_drawSprite(csfml_options->window, csfml_options->sprite,
+        sfRenderWindow_drawSprite(csfml_options->window, bird->sprite,
         NULL);
         sfRenderWindow_display(csfml_options->window);
-
-        sfClock_restart(csfml_options->clock);
-        sfSleep(sfMilliseconds(10));
+        //sfSleep(sfMilliseconds(10));
     }
 }

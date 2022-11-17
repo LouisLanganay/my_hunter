@@ -7,9 +7,9 @@
 
 #include "../includes/hunter.h"
 
-void destroy_window(csfml_struct *csfml_options)
+void destroy_window(csfml_struct *csfml_options, bird_struct *bird)
 {
-    sfSprite_destroy(csfml_options->sprite);
-    sfTexture_destroy(csfml_options->texture);
+    sfSprite_destroy(bird->sprite);
+    sfTexture_destroy(bird->texture);
     sfRenderWindow_destroy(csfml_options->window);    
 }
