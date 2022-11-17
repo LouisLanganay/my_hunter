@@ -20,20 +20,34 @@ csfml_struct init_struct(csfml_struct *csfml_options)
     csfml_options->event;
 }
 
-bird_struct create_bird(bird_struct *bird)
+birds_list new_bird(birds_list **birds, int i, int type)
 {
-    bird->texture = sfTexture_createFromFile("./assets/duck.png",
-    NULL);
+    birds_list *bird = malloc(sizeof(*bird));
+
+    bird->texture = sfTexture_createFromFile("assets/duck.png", NULL);
+    bird->rect = (sfIntRect){0, 0, 110, 110};
     bird->sprite = sfSprite_create();
-    bird->rect.height = 110;
-    bird->rect.width = 110;
-    bird->rect.left = 0;
-    bird->rect.top = 0;
-    bird->position.x = rand() % 800;
-    bird->position.y = rand() % 400;
+    bird->position = (sfVector2f){rand() % 800, rand() % 400};
+    bird->dead_sound = sfMusic_createFromFile("sounds/Punch-Hit.ogg");
+    bird->spawn_sound = NULL;
     bird->rect_count = 0;
     bird->rect_speed = 8;
-    bird->direction = 1;
+    bird->direction = rand() % 2;
+    bird->alive = 0;
+    bird->bird_id = i;
+    bird->type = type;
+    sfSprite_setTexture(bird->sprite, bird->texture, sfTrue);
+    sfSprite_setTextureRect(bird->sprite, bird->rect);
+    sfSprite_setPosition(bird->sprite, bird->position);
+    bird->next = *birds;
+    *birds = bird;
+}
+
+void create_bird_list(birds_list **birds)
+{
+    for (int i = 0; i < 10; i++) {
+        new_bird(birds, i, 0);
+    }
 }
 
 int main(int ac, char **av)
@@ -41,12 +55,12 @@ int main(int ac, char **av)
     if (check_arguments(ac, av) != 0)
         return (0);
     csfml_struct *csfml_options = malloc(sizeof(csfml_struct));
-    bird_struct *bird = malloc(sizeof(bird_struct));
+    birds_list *birds = malloc(sizeof(birds_list));
     init_struct(csfml_options);
-    create_bird(bird);
-    create_window(csfml_options, bird);
-    destroy_window(csfml_options, bird);
+    create_bird_list(&birds);
+    create_window(csfml_options, birds);
+    destroy_window(csfml_options, birds);
     free(csfml_options);
-    free(bird);
+    free(birds);
     return 0;
 }

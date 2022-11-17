@@ -13,7 +13,7 @@ PROJECT_FILES = 	src/functions/create_window.c		\
 					src/events/close_window.c			\
 					src/events/handle_events.c			\
 					src/events/mouse_click.c			\
-					src/functions/check_arguments.c		\
+					src/functions/check_arguments.c
 
 SRC	=	lib/my/my_compute_power_rec.c		\
 		lib/my/my_compute_square_root.c	\
@@ -119,7 +119,7 @@ run_tests: unit_tests
 main:
 	gcc -o my_hunter ${PATH_MAIN} \
 	${PROJECT_FILES} -I${PATH_INCLUDE} -L${PATH_LIB} -l${LIB_NAME} \
-	-l csfml-window -l csfml-graphics -l csfml-system
+	-l csfml-window -l csfml-graphics -l csfml-system -l csfml-audio
 	@echo -e "${_GREEN}[OK]${_END} Compiled"
 
 clean:

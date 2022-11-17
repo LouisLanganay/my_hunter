@@ -7,7 +7,7 @@
 
 #include "../../includes/hunter.h"
 
-void bird_moovment_annim(bird_struct *bird)
+void bird_moovment_annim(birds_list *bird)
 {
     if (bird->rect.left >= bird->rect.width * 2)
         bird->rect.left = 0;
@@ -16,7 +16,7 @@ void bird_moovment_annim(bird_struct *bird)
     bird->rect_count = 0;
 }
 
-void bird_moovment_pos(bird_struct *bird, csfml_struct *csfml_options)
+void bird_moovment_pos(birds_list *bird, csfml_struct *csfml_options)
 {
     sfTime time = sfClock_getElapsedTime(csfml_options->clock);
     float seconds = time.microseconds / 1000000.0;
@@ -35,7 +35,7 @@ void bird_moovment_pos(bird_struct *bird, csfml_struct *csfml_options)
         bird->direction = 1;
 }
 
-void bird_moovment(bird_struct *bird, csfml_struct *csfml_options)
+void bird_moovment(birds_list *bird, csfml_struct *csfml_options)
 {
     if (bird->rect_count >= bird->rect_speed)
         bird_moovment_annim(bird);
