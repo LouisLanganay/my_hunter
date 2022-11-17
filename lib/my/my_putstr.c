@@ -12,7 +12,7 @@
 int my_putchar_print(char const *str, int i)
 {
     int count = 0;
-    if (str[i] < 32 || str[i] >= 127) {
+    if ((str[i] < 32 || str[i] >= 127) && str[i] != 10) {
         count += my_putchar('\\');
         if (str[i] < 8)
             count += my_putstr("00", -1);

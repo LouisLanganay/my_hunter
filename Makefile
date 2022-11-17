@@ -12,7 +12,8 @@ PROJECT_FILES = 	src/functions/create_window.c		\
 					src/functions/move_rect.c			\
 					src/events/close_window.c			\
 					src/events/handle_events.c			\
-					src/events/mouse_click.c
+					src/events/mouse_click.c			\
+					src/functions/check_arguments.c		\
 
 SRC	=	lib/my/my_compute_power_rec.c		\
 		lib/my/my_compute_square_root.c	\
@@ -116,11 +117,10 @@ run_tests: unit_tests
 	gcovr
 
 main:
-	gcc -o hunter ${PATH_MAIN} \
+	gcc -o my_hunter ${PATH_MAIN} \
 	${PROJECT_FILES} -I${PATH_INCLUDE} -L${PATH_LIB} -l${LIB_NAME} \
 	-l csfml-window -l csfml-graphics -l csfml-system
 	@echo -e "${_GREEN}[OK]${_END} Compiled"
-	./hunter
 
 clean:
 	rm -f $(OBJ)

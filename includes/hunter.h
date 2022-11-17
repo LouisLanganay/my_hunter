@@ -48,5 +48,7 @@
     void mouse_click_left(csfml_struct *csfml_options, bird_struct *bird);
 
     void bird_moovment(bird_struct *bird, csfml_struct *csfml_options);
+
+    int check_arguments(int ac, char **av);
     
 #endif

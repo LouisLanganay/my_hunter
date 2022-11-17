@@ -25,8 +25,8 @@ void mouse_click_left(csfml_struct *csfml_options, bird_struct *bird)
 
     if (bird_hit_or_not(posM, posB) == 1) {
         printf("hit\n");
-        bird->position.x = 0;
-        bird->position.y = rand() % 500;
+        bird->position.x = rand() % 800;
+        bird->position.y = rand() % 400;
         sfSprite_setPosition(bird->sprite, bird->position);
     }
 }
