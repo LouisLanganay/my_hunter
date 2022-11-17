@@ -86,7 +86,7 @@ NAME			=	libmy.a
 
 FILES			=	$(shell find . \( -name '*~' 	\
 					-o -name '*.gcda' -o -name '*.gcno'		\
-					-o -name 'unit_tests' -o -name 'hunter' \) )
+					-o -name 'unit_tests' -o -name 'my_hunter' \) )
 
 PATH_INCLUDE	=	includes
 
