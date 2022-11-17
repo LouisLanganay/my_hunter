@@ -10,7 +10,7 @@
 
 csfml_struct init_struct(csfml_struct *csfml_options)
 {
-    csfml_options->mode = (sfVideoMode){800, 540, 32};
+    csfml_options->mode = (sfVideoMode){880, 600, 32};
     csfml_options->window = sfRenderWindow_create(csfml_options->mode,
     "SFML window", sfResize | sfClose, 0);
     csfml_options->texture = sfTexture_createFromFile("./assets/background.jpg",

@@ -20,19 +20,19 @@ void bird_moovment_pos(bird_struct *bird, csfml_struct *csfml_options)
 {
     sfTime time = sfClock_getElapsedTime(csfml_options->clock);
     float seconds = time.microseconds / 1000000.0;
-    if (bird->direction == 1)
-        bird->position.x += 200 * seconds;
-    else
-        bird->position.x -= 200 * seconds;
-
-    if (bird->position.x >= csfml_options->mode.width) {
-        sfSprite_setScale(bird->sprite, (sfVector2f){-1.0f, 1.0f});
-        bird->direction = 0;
-    }
-    if (bird->position.x <= bird->rect.width) {
+    if (bird->direction == 1) {
         sfSprite_setScale(bird->sprite, (sfVector2f){1.0f, 1.0f});
-        bird->direction = 1;
+        sfSprite_setOrigin(bird->sprite, (sfVector2f){0, 0});
+        bird->position.x += 200 * seconds;
+    } else {
+        sfSprite_setScale(bird->sprite, (sfVector2f){-1.0f, 1.0f});
+        sfSprite_setOrigin(bird->sprite, (sfVector2f){110, 0});
+        bird->position.x -= 200 * seconds;
     }
+    if (bird->position.x >= csfml_options->mode.width - bird->rect.width)
+        bird->direction = 0;
+    if (bird->position.x <= 0)
+        bird->direction = 1;
 }
 
 void bird_moovment(bird_struct *bird, csfml_struct *csfml_options)

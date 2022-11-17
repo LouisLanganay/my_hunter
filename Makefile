@@ -132,3 +132,5 @@ fclean: clean
 	@echo -e "${_GREEN}[OK]${_END} All clean"
 
 re: fclean all
+
+.SILENT:

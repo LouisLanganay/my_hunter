@@ -20,6 +20,7 @@ void set_background(csfml_struct *csfml_options)
 {
     sfSprite_setTexture(csfml_options->sprite, csfml_options->texture, sfTrue);
     sfSprite_setPosition(csfml_options->sprite, (sfVector2f){0, 0});
+    sfSprite_setScale(csfml_options->sprite, (sfVector2f){1.12, 1.12});
 }
 
 void create_window(csfml_struct *csfml_options, bird_struct *bird)
