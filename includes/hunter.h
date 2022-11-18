@@ -18,20 +18,6 @@
     #include <unistd.h>
     #include <math.h>
 
-
-    typedef struct bird_struct {
-        sfTexture* texture;
-        sfIntRect rect;
-        sfSprite* sprite;
-        sfVector2f position;
-        sfMusic* dead_sound;
-        sfMusic* spawn_sound;
-        int rect_count;
-        int rect_speed;
-        int direction;
-        int bird_id;
-    } bird_struct;
-
     typedef struct birds_list {
         sfTexture* texture;
         sfIntRect rect;

@@ -43,7 +43,7 @@ void mouse_click_left(csfml_struct *csfml_options, birds_list *birds)
             bird->position.x = rand() % csfml_options->mode.width;
             bird->position.y = rand() % (csfml_options->mode.height - 200);
             sfSprite_setPosition(bird->sprite, bird->position);
-            dead_sound(bird);
+            spawn_sound(bird);
         }
         bird = bird->next;
     }
