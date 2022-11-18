@@ -5,7 +5,7 @@
 ** task04
 */
 
-long int my_compute_power_rec(long int nb, int p)
+float my_compute_power_rec(float nb, float p)
 {
     if (p < 0)
         return (0);

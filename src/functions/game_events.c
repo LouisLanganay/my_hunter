@@ -16,7 +16,10 @@ game_struct *game)
         for (int i = 0; i < 10; i++) {
             if (birds->alive == 0) {
                 birds->alive = 1;
-                sfMusic_play(birds->spawn_sound);
+                if (birds->spawn_sound != NULL) {
+                    sfMusic_setPlayingOffset(birds->spawn_sound, sfSeconds(0));
+                    sfMusic_play(birds->spawn_sound);
+                }
                 break;
             }
             birds = birds->next;

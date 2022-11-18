@@ -34,7 +34,7 @@
 
     void my_sort_int_array(int *tab, int size);
 
-    long int my_compute_power_rec(long int nb, int power);
+    float my_compute_power_rec(float nb, float power);
 
     int my_put_nbr_float(double nb, int precision);
 

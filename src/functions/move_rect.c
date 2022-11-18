@@ -6,6 +6,7 @@
 */
 
 #include "../../includes/hunter.h"
+#include "../../includes/my.h"
 
 void bird_moovment_annim(birds_list *bird)
 {
@@ -20,16 +21,17 @@ void bird_moovment_pos(birds_list *bird, csfml_struct *csfml_options)
 {
     sfTime time = sfClock_getElapsedTime(csfml_options->clock);
     float seconds = time.microseconds / 1000000.0;
+    float scale = bird->position.y / 500 - 0.7;
     if (bird->direction == 1) {
-        sfSprite_setScale(bird->sprite, (sfVector2f){0.5f, 0.5f});
-        sfSprite_setOrigin(bird->sprite, (sfVector2f){0, 0});
+        sfSprite_setScale(bird->sprite, (sfVector2f){scale, scale});
+        sfSprite_setOrigin(bird->sprite, (sfVector2f){0, bird->rect.height});
         bird->position.x += 200 * seconds;
     } else {
-        sfSprite_setScale(bird->sprite, (sfVector2f){-0.5f, 0.5f});
-        sfSprite_setOrigin(bird->sprite, (sfVector2f){110, 0});
+        sfSprite_setScale(bird->sprite, (sfVector2f){scale * (-1), scale});
+        sfSprite_setOrigin(bird->sprite, (sfVector2f){bird->rect.width, bird->rect.height});
         bird->position.x -= 200 * seconds;
     }
-    if (bird->position.x >= csfml_options->mode.width)
+    if (bird->position.x + bird->rect.width * sfSprite_getScale(bird->sprite).x >= csfml_options->mode.width)
         bird->direction = 0;
     if (bird->position.x <= 0)
         bird->direction = 1;

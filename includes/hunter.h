@@ -19,7 +19,13 @@
     #include <math.h>
 
     typedef struct game_struct {
+        sfMusic* intro_sound;
+        sfTexture* crosshair_texture;
+        sfSprite* crosshair_sprite;
         int spawnRatio;
+        float bot_scale;
+        int spawn_max;
+        int spawn_min;
     } game_struct;
 
     typedef struct birds_list {
@@ -56,9 +62,13 @@
 
     void close_window(csfml_struct *csfml_options);
 
-    void handle_events(csfml_struct *csfml_options, birds_list *birds);
+    void handle_events(csfml_struct *csfml_options,
+                        birds_list *birds,
+                        game_struct *game);
 
-    void mouse_click_left(csfml_struct *csfml_options, birds_list *birds);
+    void mouse_click_left(csfml_struct *csfml_options,
+                        birds_list *birds,
+                        game_struct *game);
 
     void bird_moovment(birds_list *bird, csfml_struct *csfml_options);
 
