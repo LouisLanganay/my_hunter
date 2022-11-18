@@ -24,7 +24,7 @@ void draw_birds(birds_list *birds, csfml_struct *csfml_options)
 {
     birds_list *bird = birds;
     for (int i = 0; i < 10; i++) {
-        if (bird->alive == 0)
+        if (bird->alive == 1)
             sfRenderWindow_drawSprite(csfml_options->window, bird->sprite,
             NULL);
         bird = bird->next;
@@ -35,10 +35,11 @@ void set_background(csfml_struct *csfml_options)
 {
     sfSprite_setTexture(csfml_options->sprite, csfml_options->texture, sfTrue);
     sfSprite_setPosition(csfml_options->sprite, (sfVector2f){0, 0});
-    sfSprite_setScale(csfml_options->sprite, (sfVector2f){1.12, 1.12});
 }
 
-void create_window(csfml_struct *csfml_options, birds_list *birds)
+void create_window(csfml_struct *csfml_options,
+                    birds_list *birds,
+                    game_struct *game)
 {
     sfTime time;
     float seconds;
@@ -59,7 +60,7 @@ void create_window(csfml_struct *csfml_options, birds_list *birds)
         sfRenderWindow_drawSprite(csfml_options->window, csfml_options->sprite,
         NULL);
         draw_birds(birds, csfml_options);
+        game_events(birds, csfml_options, game);
         sfRenderWindow_display(csfml_options->window);
-        //sfSleep(sfMilliseconds(10));
     }
 }

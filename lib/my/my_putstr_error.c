@@ -9,7 +9,7 @@
 
 /**
  * @brief Display a string in error output
- * 
+ *
  * @param str Our string
  * @return int Printed characters count
  */

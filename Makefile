@@ -13,7 +13,8 @@ PROJECT_FILES = 	src/functions/create_window.c		\
 					src/events/close_window.c			\
 					src/events/handle_events.c			\
 					src/events/mouse_click.c			\
-					src/functions/check_arguments.c
+					src/functions/check_arguments.c		\
+					src/functions/game_events.c			\
 
 SRC	=	lib/my/my_compute_power_rec.c		\
 		lib/my/my_compute_square_root.c	\

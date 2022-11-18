@@ -113,7 +113,8 @@ run_tests: unit_tests
 	gcovr
 
 main: fclean all
-	gcc -o main ${PATH_MAIN} -I${PATH_INCLUDE} -L${PATH_LIB} -l${LIB_NAME} -l csfml-window -l csfml-graphics
+	gcc -o main ${PATH_MAIN} -I${PATH_INCLUDE} -L${PATH_LIB} -l${LIB_NAME} \
+	-l csfml-window -l csfml-graphics
 	@echo -e "${_GREEN}[OK]${_END} Compiled"
 	./main
 
