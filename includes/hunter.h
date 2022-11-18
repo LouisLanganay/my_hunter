@@ -58,7 +58,9 @@
                         birds_list *birds,
                         game_struct *game);
 
-    void destroy_window(csfml_struct *csfml_options, birds_list *birds);
+    void destroy_window(csfml_struct *csfml_options,
+    birds_list *birds,
+    game_struct *game);
 
     void close_window(csfml_struct *csfml_options);
 

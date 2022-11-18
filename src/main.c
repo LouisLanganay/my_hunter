@@ -77,7 +77,7 @@ int main(int ac, char **av)
     init_game_struct(game);
     create_bird_list(&birds, game);
     create_window(csfml_options, birds, game);
-    destroy_window(csfml_options, birds);
+    destroy_window(csfml_options, birds, game);
     free(csfml_options);
     free(birds);
     free(game);

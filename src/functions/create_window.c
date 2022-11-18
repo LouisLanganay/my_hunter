@@ -20,7 +20,7 @@ void set_textures(csfml_struct *csfml_options, birds_list *birds)
     }
 }
 
-void draw_birds(birds_list *birds, csfml_struct *csfml_options)
+void draw_bots(birds_list *birds, csfml_struct *csfml_options)
 {
     birds_list *bird = birds;
     for (int i = 0; i < 10; i++) {
@@ -33,18 +33,21 @@ void draw_birds(birds_list *birds, csfml_struct *csfml_options)
 
 void set_background(csfml_struct *csfml_options, game_struct* game)
 {
+    sfRenderWindow_setMouseCursorVisible(csfml_options->window, sfFalse);
     sfMusic_play(game->intro_sound);
     sfSprite_setTexture(csfml_options->sprite, csfml_options->texture, sfTrue);
     sfSprite_setPosition(csfml_options->sprite, (sfVector2f){0, 0});
 }
 
-void set_crosshair(csfml_struct *csfml_options, game_struct *game)
+void draw_crosshair(csfml_struct *csfml_options, game_struct *game)
 {
     sfSprite_setTexture(game->crosshair_sprite, game->crosshair_texture,
     sfTrue);
     sfSprite_setPosition(game->crosshair_sprite,
-    (sfVector2f){sfMouse_getPosition(csfml_options->window).x,
-    sfMouse_getPosition(csfml_options->window).y});
+    (sfVector2f){sfMouse_getPositionRenderWindow(csfml_options->window).x,
+    sfMouse_getPositionRenderWindow(csfml_options->window).y});
+    sfRenderWindow_drawSprite(csfml_options->window, game->crosshair_sprite,
+    NULL);
 }
 
 void create_window(csfml_struct *csfml_options,
@@ -69,8 +72,8 @@ void create_window(csfml_struct *csfml_options,
         sfRenderWindow_clear(csfml_options->window, sfBlack);
         sfRenderWindow_drawSprite(csfml_options->window, csfml_options->sprite,
         NULL);
-        set_crosshair(csfml_options, game);
-        draw_birds(birds, csfml_options);
+        draw_crosshair(csfml_options, game);
+        draw_bots(birds, csfml_options);
         game_events(birds, csfml_options, game);
         sfRenderWindow_display(csfml_options->window);
     }
