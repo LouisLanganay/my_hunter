@@ -18,6 +18,13 @@ game_struct init_game_struct(game_struct *game)
     game->crosshair_texture = sfTexture_createFromFile("assets/crosshair1.png",
     NULL);
     game->crosshair_sprite = sfSprite_create();
+    game->startb_texture = sfTexture_createFromFile("assets/gui/startb.png",
+    NULL);
+    game->startb_rect = (sfIntRect){0, 0, 366, 74};
+    game->startb_sprite = sfSprite_create();
+    game->startb_click = sfMusic_createFromFile("sounds/gui/button2.ogg");
+    game->startb_hover = sfMusic_createFromFile("sounds/gui/button1.ogg");
+    game->started = 0;
 }
 
 csfml_struct init_struct(csfml_struct *csfml_options)

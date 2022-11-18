@@ -22,8 +22,15 @@
         sfMusic* intro_sound;
         sfTexture* crosshair_texture;
         sfSprite* crosshair_sprite;
+        sfTexture* startb_texture;
+        sfSprite* startb_sprite;
+        sfIntRect startb_rect;
+        sfMusic* startb_click;
+        sfMusic* startb_hover;
+        int startb_hovered;
         int spawnRatio;
         float bot_scale;
+        int started;
         int spawn_max;
         int spawn_min;
     } game_struct;

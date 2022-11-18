@@ -30,10 +30,25 @@ void dead_sound(birds_list *bird)
     }
 }
 
+void start_button(csfml_struct *csfml_options,
+game_struct *game,
+sfVector2i posM)
+{
+    sfVector2f posB = sfSprite_getPosition(game->startb_sprite);
+    if (posM.x >= posB.x && posM.x <= posB.x + game->startb_rect.width)
+        if (posM.y >= posB.y && posM.y <= posB.y + game->startb_rect.height) {
+            game->started = 1;
+            sfMusic_play(game->startb_click);
+            sfMusic_play(game->intro_sound);
+        }
+}
+
 void mouse_click_left(csfml_struct *csfml_options, birds_list *birds, game_struct *game)
 {
     birds_list *bird = birds;
     sfVector2i posM = sfMouse_getPositionRenderWindow(csfml_options->window);
+    if (game->started == 0)
+        return start_button(csfml_options, game, posM);
     for (int i = 0; i < 10; i++) {
         sfVector2f posB = sfSprite_getPosition(bird->sprite);
         if (bird_hit_or_not(posM, posB, bird) == 1) {

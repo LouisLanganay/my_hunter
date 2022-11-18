@@ -26,5 +26,8 @@ game_struct *game)
     sfTexture_destroy(game->crosshair_texture);
     sfMusic_destroy(game->intro_sound);
 
+    sfSprite_destroy(game->startb_sprite);
+    sfTexture_destroy(game->startb_texture);
+
     sfRenderWindow_destroy(csfml_options->window);
 }
