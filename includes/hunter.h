@@ -23,6 +23,8 @@
         sfTexture* crosshair_texture;
         sfSprite* crosshair_sprite;
         sfTexture* startb_texture;
+        sfTexture* page1_texture;
+        sfSprite* page1_sprite;
         sfSprite* startb_sprite;
         sfIntRect startb_rect;
         sfMusic* startb_click;

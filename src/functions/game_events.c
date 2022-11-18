@@ -24,11 +24,16 @@ void enter_range(csfml_struct *csfml_options, game_struct *game)
             game->startb_hovered = 0;
             game->startb_rect.left = 0;
         }
+
+    sfSprite_setTexture(game->page1_sprite, game->page1_texture, sfTrue);
+    sfSprite_setPosition(game->page1_sprite, (sfVector2f){0, 0});
+    sfRenderWindow_drawSprite(csfml_options->window, game->page1_sprite,
+    NULL);
     sfSprite_setTexture(game->startb_sprite, game->startb_texture,
     sfTrue);
     sfSprite_setTextureRect(game->startb_sprite, game->startb_rect);
     sfSprite_setPosition(game->startb_sprite,
-    (sfVector2f){255, 400});
+    (sfVector2f){255, 470});
     sfRenderWindow_drawSprite(csfml_options->window, game->startb_sprite,
     NULL);
 }

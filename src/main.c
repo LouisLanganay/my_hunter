@@ -24,6 +24,9 @@ game_struct init_game_struct(game_struct *game)
     game->startb_sprite = sfSprite_create();
     game->startb_click = sfMusic_createFromFile("sounds/gui/button2.ogg");
     game->startb_hover = sfMusic_createFromFile("sounds/gui/button1.ogg");
+    game->page1_texture = sfTexture_createFromFile("assets/gui/page1.png",
+    NULL);
+    game->page1_sprite = sfSprite_create();
     game->started = 0;
 }
 
@@ -57,7 +60,7 @@ birds_list new_bird(birds_list **birds, int i, int type, game_struct *game)
     bird->alive = 0;
     bird->bird_id = i;
     bird->type = type;
-    sfMusic_setVolume(bird->dead_sound, 30);
+    sfMusic_setVolume(bird->dead_sound, 10);
     sfSprite_setOrigin(bird->sprite, (sfVector2f){0, bird->rect.height});
     sfSprite_setTexture(bird->sprite, bird->texture, sfTrue);
     sfSprite_setTextureRect(bird->sprite, bird->rect);
