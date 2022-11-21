@@ -12,7 +12,7 @@ game_struct init_game_struct(game_struct *game)
 {
     game->spawnRatio = 9900;
     game->bot_scale = 0.5;
-    game->spawn_max = 600;
+    game->spawn_max = 620;
     game->spawn_min = 480;
     game->intro_sound = sfMusic_createFromFile("sounds/musics/intro.ogg");
     game->crosshair_texture = sfTexture_createFromFile("assets/crosshair1.png",
@@ -27,6 +27,10 @@ game_struct init_game_struct(game_struct *game)
     game->page1_texture = sfTexture_createFromFile("assets/gui/page1.png",
     NULL);
     game->page1_sprite = sfSprite_create();
+    game->intro_sprite = sfSprite_create();
+    game->intro_texture = sfTexture_createFromFile("assets/gui/intro_back.jpg",
+    NULL);
+    game->shoot_sound = sfMusic_createFromFile("sounds/vandal/vandal1.ogg");
     game->started = 0;
 }
 

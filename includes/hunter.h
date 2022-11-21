@@ -25,10 +25,13 @@
         sfTexture* startb_texture;
         sfTexture* page1_texture;
         sfSprite* page1_sprite;
+        sfTexture* intro_texture;
+        sfSprite* intro_sprite;
         sfSprite* startb_sprite;
         sfIntRect startb_rect;
         sfMusic* startb_click;
         sfMusic* startb_hover;
+        sfMusic* shoot_sound;
         int startb_hovered;
         int spawnRatio;
         float bot_scale;

@@ -16,4 +16,6 @@ void handle_events(csfml_struct *csfml_options, birds_list *birds, game_struct *
         if (sfMouse_isButtonPressed(sfMouseLeft) == 1)
             mouse_click_left(csfml_options, birds, game);
     }
+    if (sfMouse_isButtonPressed(sfMouseLeft) == 1)
+        mouse_click_left(csfml_options, birds, game);
 }
