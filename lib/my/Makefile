@@ -54,12 +54,9 @@ SRC	=	my_compute_power_rec.c		\
 		my_put_address.c		\
 		my_putnbr_base_long.c		\
 		my_put_nbr_scientific.c		\
+		my_int_to_str.c			\
 		my_e_or_f_flag.c		\
 		my_put_nbr_long.c		\
-		my_putpixel.c 		\
-		my_framebuffer_create.c 	\
-		my_framebuffer_destroy.c 	\
-		my_putsquare.c			\
 		printf/c.c			\
 		printf/di.c			\
 		printf/f.c			\
@@ -101,7 +98,6 @@ all: 	$(NAME)
 $(NAME):	$(OBJ)
 	ar rc $(NAME) $(OBJ)
 	cp my.h ${PATH_INCLUDE}
-	cp framebuffer.h ${PATH_INCLUDE}
 	make clean
 
 unit_tests: fclean all

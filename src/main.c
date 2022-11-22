@@ -32,6 +32,12 @@ game_struct init_game_struct(game_struct *game)
     NULL);
     game->shoot_sound = sfMusic_createFromFile("sounds/vandal/vandal1.ogg");
     game->started = 0;
+    game->text = sfText_create();
+    game->font = sfFont_createFromFile("fonts/valorant.ttf");
+    game->score = 0;
+    sfText_setColor(game->text, sfColor_fromRGB(152, 196, 200));
+    sfText_setFont(game->text, game->font);
+    sfText_setCharacterSize(game->text, 50);
 }
 
 csfml_struct init_struct(csfml_struct *csfml_options)

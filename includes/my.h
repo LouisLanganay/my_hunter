@@ -20,6 +20,8 @@
 
     int my_put_nbr(int nb, int precision);
 
+    char *my_int_to_str(int nb);
+
     int my_put_nbr_long(long int nb, int precision);
 
     void my_swap(int *a, int *b);

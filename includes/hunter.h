@@ -32,12 +32,15 @@
         sfMusic* startb_click;
         sfMusic* startb_hover;
         sfMusic* shoot_sound;
+        sfText* text;
+        sfFont* font;
         int startb_hovered;
         int spawnRatio;
         float bot_scale;
         int started;
         int spawn_max;
         int spawn_min;
+        int score;
     } game_struct;
 
     typedef struct birds_list {
@@ -91,5 +94,9 @@
     void game_events(birds_list *birds,
                     csfml_struct *csfml_options,
                     game_struct *game);
+    
+    void draw_text(csfml_struct *csfml_options, game_struct *game);
+    
+    void draw_croshair(csfml_struct *csfml_options, game_struct *game);
 
 #endif

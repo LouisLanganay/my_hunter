@@ -58,6 +58,7 @@ void mouse_click_left(csfml_struct *csfml_options, birds_list *birds, game_struc
             bird->position.x = rand() % csfml_options->mode.width;
             bird->position.y = game->spawn_min + rand() % (game->spawn_max + 1 - game->spawn_min);
             sfSprite_setPosition(bird->sprite, bird->position);
+            game->score += 1;
         }
         bird = bird->next;
     }

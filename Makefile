@@ -15,6 +15,8 @@ PROJECT_FILES = 	src/functions/create_window.c		\
 					src/events/mouse_click.c			\
 					src/functions/check_arguments.c		\
 					src/functions/game_events.c			\
+					src/functions/draw/draw_text.c			\
+					src/functions/draw/draw_croshair.c		\
 
 SRC	=	lib/my/my_compute_power_rec.c		\
 		lib/my/my_compute_square_root.c	\
@@ -60,6 +62,7 @@ SRC	=	lib/my/my_compute_power_rec.c		\
 		lib/my/my_unsignednbrlen.c		\
 		lib/my/my_putnbr_base.c		\
 		lib/my/my_printf.c			\
+		lib/my/my_int_to_str.c			\
 		lib/my/my_put_address.c		\
 		lib/my/my_putnbr_base_long.c		\
 		lib/my/my_put_nbr_scientific.c		\
