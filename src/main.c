@@ -40,6 +40,10 @@ csfml_struct init_struct(csfml_struct *csfml_options)
     csfml_options->sprite = sfSprite_create();
     csfml_options->clock = sfClock_create();
     csfml_options->event;
+    csfml_options->vandal_texture = sfTexture_createFromFile(
+    "./assets/gui/vandal.png", NULL);
+    csfml_options->vandal_sprite = sfSprite_create();
+    csfml_options->vandal_rect = (sfIntRect){0, 0, 913, 520};
 }
 
 birds_list new_bird(birds_list **birds, int i, int type, game_struct *game)

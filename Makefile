@@ -17,6 +17,7 @@ PROJECT_FILES = 	src/functions/create_window.c		\
 					src/functions/game_events.c			\
 					src/functions/draw/draw_text.c			\
 					src/functions/draw/draw_croshair.c		\
+					src/functions/draw/draw_vandal.c		\
 
 SRC	=	lib/my/my_compute_power_rec.c		\
 		lib/my/my_compute_square_root.c	\

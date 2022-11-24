@@ -45,6 +45,13 @@ sfVector2i posM)
         }
 }
 
+void vandal_shoot(csfml_struct *csfml_options, game_struct *game)
+{
+    csfml_options->vandal_rect.left = csfml_options->vandal_rect.width;
+    sfMusic_setPlayingOffset(game->shoot_sound, sfSeconds(0.2));
+    sfMusic_play(game->shoot_sound);
+}
+
 void mouse_click_left(csfml_struct *csfml_options,
 birds_list *birds,
 game_struct *game)
@@ -53,6 +60,7 @@ game_struct *game)
     sfVector2i posM = sfMouse_getPositionRenderWindow(csfml_options->window);
     if (game->started == 0)
         return start_button(csfml_options, game, posM);
+    vandal_shoot(csfml_options, game);
     for (int i = 0; i < 10; i++) {
         sfVector2f posB = sfSprite_getPosition(bird->sprite);
         if (bird_hit_or_not(posM, posB, bird) == 1) {

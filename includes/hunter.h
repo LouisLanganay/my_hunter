@@ -64,6 +64,9 @@
         sfSprite* sprite;
         sfTexture* texture;
         sfRenderWindow* window;
+        sfTexture* vandal_texture;
+        sfSprite* vandal_sprite;
+        sfIntRect vandal_rect;
     } csfml_struct;
 
     void create_window(csfml_struct *csfml_options,
@@ -95,5 +98,7 @@
     void draw_text(csfml_struct *csfml_options, game_struct *game);
 
     void draw_croshair(csfml_struct *csfml_options, game_struct *game);
+
+    void draw_vandal(csfml_struct *csfml_options);
 
 #endif

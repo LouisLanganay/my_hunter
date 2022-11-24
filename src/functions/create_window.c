@@ -38,15 +38,17 @@ void set_background(csfml_struct *csfml_options, game_struct* game)
     sfSprite_setPosition(csfml_options->sprite, (sfVector2f){0, 0});
 }
 
-void draw(csfml_struct *csfml_options, game_struct *game)
+void draw(csfml_struct *csfml_options, game_struct *game, birds_list *birds)
 {
     sfRenderWindow_clear(csfml_options->window, sfBlack);
     if (game->started == 0)
         return;
     sfRenderWindow_drawSprite(csfml_options->window, csfml_options->sprite,
         NULL);
-    draw_croshair(csfml_options, game);
     draw_text(csfml_options, game);
+    draw_bots(birds, csfml_options);
+    draw_croshair(csfml_options, game);
+    draw_vandal(csfml_options);
 }
 
 void create_window(csfml_struct *csfml_options,
@@ -68,8 +70,7 @@ void create_window(csfml_struct *csfml_options,
             set_textures(csfml_options, birds);
             sfClock_restart(csfml_options->clock);
         }
-        draw(csfml_options, game);
-        draw_bots(birds, csfml_options);
+        draw(csfml_options, game, birds);
         game_events(birds, csfml_options, game);
         sfRenderWindow_display(csfml_options->window);
     }

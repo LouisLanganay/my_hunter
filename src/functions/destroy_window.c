@@ -7,6 +7,25 @@
 
 #include "../includes/hunter.h"
 
+void destroy_other(csfml_struct *csfml_options,
+birds_list *birds,
+game_struct *game)
+{
+    sfSprite_destroy(csfml_options->sprite);
+    sfTexture_destroy(csfml_options->texture);
+    sfSprite_destroy(game->crosshair_sprite);
+    sfTexture_destroy(game->crosshair_texture);
+    sfMusic_destroy(game->intro_sound);
+    sfMusic_destroy(game->shoot_sound);
+    sfText_destroy(game->text);
+    sfFont_destroy(game->font);
+    sfSprite_destroy(game->startb_sprite);
+    sfTexture_destroy(game->startb_texture);
+    sfTexture_destroy(csfml_options->vandal_texture);
+    sfSprite_destroy(csfml_options->vandal_sprite);
+    sfRenderWindow_destroy(csfml_options->window);
+}
+
 void destroy_window(csfml_struct *csfml_options,
 birds_list *birds,
 game_struct *game)
@@ -19,14 +38,5 @@ game_struct *game)
         sfMusic_destroy(bird->spawn_sound);
         bird = bird->next;
     }
-    sfSprite_destroy(csfml_options->sprite);
-    sfTexture_destroy(csfml_options->texture);
-    sfSprite_destroy(game->crosshair_sprite);
-    sfTexture_destroy(game->crosshair_texture);
-    sfMusic_destroy(game->intro_sound);
-    sfText_destroy(game->text);
-    sfFont_destroy(game->font);
-    sfSprite_destroy(game->startb_sprite);
-    sfTexture_destroy(game->startb_texture);
-    sfRenderWindow_destroy(csfml_options->window);
+    destroy_other(csfml_options, birds, game);
 }
