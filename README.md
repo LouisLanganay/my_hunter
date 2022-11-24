@@ -29,6 +29,37 @@ Then run the game:
     ./my_hunter
 ```
 
+## ToDo
+
+### MUST
+- [x] • The window must be closed using events.
+- [x] • The program must manage the input from the mouse click.
+- [x] • The program must contain animated sprites rendered thanks to sprite sheets.
+- [x] • The program must contain moving (rotating, translating, or scaling) elements.
+- [x] • The program must accept the “-h” option, then display a short description of the program, and the available user inputs.
+
+### SHOULD
+- [x] • Animations and movements in your program should not depend on the speed of your computer.
+- [x] • Animations and movements in your program should be timed by sfClock elements.
+- [x] • Your window should stick between 800x600 pixels and 1920x1080 pixels.
+- [x] • Your window should have a limited frame rate such that it can be compute without lagging.
+
+### COULD
+- [ ] • The program could have several different levels.
+- [ ] • The program could display the score of the player.
+- [ ] • The program could store the highest score made.
+- [x] • The program could display a small target under the mouse cursor.
+
+
+### FEATURES
+- [x] Valorant range background
+- [ ] Hand with vandal skin
+- [x] Point crosshair
+- [x] Replace birds by bots
+- [x] Start game button
+- [ ] Stop game button
+- [ ] Score and timer
+
 ## Authors
 
 - [@L.Langanay](https://github.com/LouisLanganay) [![wakatime](https://wakatime.com/badge/user/3372edb3-08ff-4829-807b-29bbe42cf52b/project/f9448a35-7a09-4582-84a9-027129a94295.svg)](https://wakatime.com/badge/user/3372edb3-08ff-4829-807b-29bbe42cf52b/project/f9448a35-7a09-4582-84a9-027129a94295)
