@@ -53,7 +53,7 @@ Then run the game:
 
 ### FEATURES
 - [x] Valorant range background
-- [ ] Hand with vandal skin
+- [x] Hand with vandal skin
 - [x] Point crosshair
 - [x] Replace birds by bots
 - [x] Start game button
