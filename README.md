@@ -46,7 +46,7 @@ Then run the game:
 
 ### COULD
 - [ ] • The program could have several different levels.
-- [ ] • The program could display the score of the player.
+- [x] • The program could display the score of the player.
 - [ ] • The program could store the highest score made.
 - [x] • The program could display a small target under the mouse cursor.
 
@@ -58,7 +58,8 @@ Then run the game:
 - [x] Replace birds by bots
 - [x] Start game button
 - [ ] Stop game button
-- [ ] Score and timer
+- [x] Score
+- [ ] Timer
 
 ## Authors
 
