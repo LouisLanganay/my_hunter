@@ -8,12 +8,23 @@ The basic rules for the my_hunter are as follows:
 - the player can click on them to shoot them.
 - [Subject](https://intra.epitech.eu/module/2022/B-MUL-100/REN-1-1/acti-558342/project/file/B-MUL-100_my_hunter.pdf)
 
-## Exe compilation
+## My idea
+
+I've been playing Valorant for a while so I had the idea of trying to replicate the Valorant shooting range.
+It's kind of the same as a classic my_hunter, the graphics are just different.
+
+## How To Play ?
 
 To compile this project run the following command at `.`
 
 ```bash
     make
+```
+
+Then run the game:
+
+```bash
+    ./my_hunter
 ```
 
 ## Authors
@@ -24,4 +35,4 @@ To compile this project run the following command at `.`
 
 ## Sources
 
-[Background image](https://opengameart.org/content/country-side-platform-tiles)
+[Sounds and images](https://playvalorant.com)
