@@ -25,8 +25,6 @@
         sfTexture* startb_texture;
         sfTexture* page1_texture;
         sfSprite* page1_sprite;
-        sfTexture* intro_texture;
-        sfSprite* intro_sprite;
         sfSprite* startb_sprite;
         sfIntRect startb_rect;
         sfMusic* startb_click;
@@ -36,7 +34,6 @@
         sfFont* font;
         int startb_hovered;
         int spawnRatio;
-        float bot_scale;
         int started;
         int spawn_max;
         int spawn_min;
@@ -94,9 +91,9 @@
     void game_events(birds_list *birds,
                     csfml_struct *csfml_options,
                     game_struct *game);
-    
+
     void draw_text(csfml_struct *csfml_options, game_struct *game);
-    
+
     void draw_croshair(csfml_struct *csfml_options, game_struct *game);
 
 #endif

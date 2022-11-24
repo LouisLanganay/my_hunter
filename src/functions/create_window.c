@@ -40,6 +40,7 @@ void set_background(csfml_struct *csfml_options, game_struct* game)
 
 void draw(csfml_struct *csfml_options, game_struct *game)
 {
+    sfRenderWindow_clear(csfml_options->window, sfBlack);
     if (game->started == 0)
         return;
     sfRenderWindow_drawSprite(csfml_options->window, csfml_options->sprite,
@@ -67,7 +68,6 @@ void create_window(csfml_struct *csfml_options,
             set_textures(csfml_options, birds);
             sfClock_restart(csfml_options->clock);
         }
-        sfRenderWindow_clear(csfml_options->window, sfBlack);
         draw(csfml_options, game);
         draw_bots(birds, csfml_options);
         game_events(birds, csfml_options, game);

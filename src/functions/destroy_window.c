@@ -21,16 +21,12 @@ game_struct *game)
     }
     sfSprite_destroy(csfml_options->sprite);
     sfTexture_destroy(csfml_options->texture);
-
     sfSprite_destroy(game->crosshair_sprite);
     sfTexture_destroy(game->crosshair_texture);
     sfMusic_destroy(game->intro_sound);
-
     sfText_destroy(game->text);
     sfFont_destroy(game->font);
-
     sfSprite_destroy(game->startb_sprite);
     sfTexture_destroy(game->startb_texture);
-
     sfRenderWindow_destroy(csfml_options->window);
 }

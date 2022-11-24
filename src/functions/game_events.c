@@ -7,6 +7,17 @@
 
 #include "../includes/hunter.h"
 
+void enter_range_draw(csfml_struct *csfml_options, game_struct *game)
+{
+    sfSprite_setTexture(game->page1_sprite, game->page1_texture, sfTrue);
+    sfSprite_setPosition(game->page1_sprite, (sfVector2f){0, 0});
+    sfRenderWindow_drawSprite(csfml_options->window, game->page1_sprite, NULL);
+    sfSprite_setTexture(game->startb_sprite, game->startb_texture, sfTrue);
+    sfSprite_setTextureRect(game->startb_sprite, game->startb_rect);
+    sfSprite_setPosition(game->startb_sprite, (sfVector2f){255, 470});
+    sfRenderWindow_drawSprite(csfml_options->window, game->startb_sprite, NULL);
+}
+
 void enter_range(csfml_struct *csfml_options, game_struct *game)
 {
     sfVector2i posM = sfMouse_getPositionRenderWindow(csfml_options->window);
@@ -24,18 +35,7 @@ void enter_range(csfml_struct *csfml_options, game_struct *game)
             game->startb_hovered = 0;
             game->startb_rect.left = 0;
         }
-
-    sfSprite_setTexture(game->page1_sprite, game->page1_texture, sfTrue);
-    sfSprite_setPosition(game->page1_sprite, (sfVector2f){0, 0});
-    sfRenderWindow_drawSprite(csfml_options->window, game->page1_sprite,
-    NULL);
-    sfSprite_setTexture(game->startb_sprite, game->startb_texture,
-    sfTrue);
-    sfSprite_setTextureRect(game->startb_sprite, game->startb_rect);
-    sfSprite_setPosition(game->startb_sprite,
-    (sfVector2f){255, 470});
-    sfRenderWindow_drawSprite(csfml_options->window, game->startb_sprite,
-    NULL);
+    enter_range_draw(csfml_options, game);
 }
 
 void game_events(birds_list *birds,
@@ -45,17 +45,19 @@ game_struct *game)
     int ratio = rand() % 10000;
     if (game->started == 0)
         return enter_range(csfml_options, game);
-    if (game->spawnRatio < ratio && game->started == 1) {
-        for (int i = 0; i < 10; i++) {
-            if (birds->alive == 0) {
-                birds->alive = 1;
-                if (birds->spawn_sound != NULL) {
-                    sfMusic_setPlayingOffset(birds->spawn_sound, sfSeconds(0));
-                    sfMusic_play(birds->spawn_sound);
-                }
-                break;
-            }
+    if (game->spawnRatio > ratio || game->started == 0)
+        return;
+    for (int i = 0; i < 10; i++) {
+        if (birds->alive != 0) {
             birds = birds->next;
+            continue;
         }
+        birds->alive = 1;
+        if (birds->spawn_sound != NULL) {
+            sfMusic_setPlayingOffset(birds->spawn_sound, sfSeconds(0));
+            sfMusic_play(birds->spawn_sound);
+        }
+        break;
+        birds = birds->next;
     }
 }

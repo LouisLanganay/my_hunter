@@ -111,8 +111,6 @@ run_tests: unit_tests
 main: fclean all
 	gcc -o main ${PATH_MAIN} -I${PATH_INCLUDE} -L${PATH_LIB} -l${LIB_NAME} \
 	-l csfml-window -l csfml-graphics
-	@echo -e "${_GREEN}[OK]${_END} Compiled"
-	./main
 
 clean:
 	rm -f $(OBJ)
@@ -120,7 +118,5 @@ clean:
 fclean: clean
 	rm -f $(NAME)
 	rm -f $(FILES)
-	clear
-	@echo -e "${_GREEN}[OK]${_END} All clean"
 
 re: fclean all

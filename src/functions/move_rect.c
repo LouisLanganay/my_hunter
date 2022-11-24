@@ -28,10 +28,12 @@ void bird_moovment_pos(birds_list *bird, csfml_struct *csfml_options)
         bird->position.x += 200 * seconds;
     } else {
         sfSprite_setScale(bird->sprite, (sfVector2f){scale * (-1), scale});
-        sfSprite_setOrigin(bird->sprite, (sfVector2f){bird->rect.width, bird->rect.height});
+        sfSprite_setOrigin(bird->sprite, (sfVector2f){bird->rect.width,
+        bird->rect.height});
         bird->position.x -= 200 * seconds;
     }
-    if (bird->position.x + bird->rect.width * sfSprite_getScale(bird->sprite).x >= csfml_options->mode.width)
+    if (bird->position.x + bird->rect.width * sfSprite_getScale(bird->sprite).x
+    >= csfml_options->mode.width)
         bird->direction = 0;
     if (bird->position.x <= 0)
         bird->direction = 1;

@@ -124,7 +124,6 @@ main:
 	gcc -o my_hunter ${PATH_MAIN} \
 	${PROJECT_FILES} -I${PATH_INCLUDE} -L${PATH_LIB} -l${LIB_NAME} \
 	-l csfml-window -l csfml-graphics -l csfml-system -l csfml-audio -lm
-	@echo -e "${_GREEN}[OK]${_END} Compiled"
 
 clean:
 	rm -f $(OBJ)
@@ -132,8 +131,6 @@ clean:
 fclean: clean
 	rm -f $(NAME)
 	rm -f $(FILES)
-	clear
-	@echo -e "${_GREEN}[OK]${_END} All clean"
 
 re: fclean all
 

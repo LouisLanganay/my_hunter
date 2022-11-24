@@ -12,13 +12,15 @@ int bird_hit_or_not(sfVector2i posM, sfVector2f posB, birds_list *bird)
     if (bird->alive == 0)
         return 0;
     if (bird->direction == 1)
-        if (posM.x >= posB.x && posM.x <= posB.x + bird->rect.width * sfSprite_getScale(bird->sprite).x)
-            if (posM.y <= posB.y && posM.y >= posB.y - bird->rect.height * sfSprite_getScale(bird->sprite).y)
-                return 1;
+        if ((posM.x >= posB.x && posM.x <= posB.x + bird->rect.width *
+        sfSprite_getScale(bird->sprite).x) && (posM.y <= posB.y && posM.y >=
+        posB.y - bird->rect.height * sfSprite_getScale(bird->sprite).y))
+            return 1;
     if (bird->direction == 0)
-        if (posM.x >= posB.x && posM.x <= posB.x + bird->rect.width * (sfSprite_getScale(bird->sprite).x * -1))
-            if (posM.y <= posB.y && posM.y >= posB.y - bird->rect.height * sfSprite_getScale(bird->sprite).y)
-                return 1;
+        if ((posM.x >= posB.x && posM.x <= posB.x + bird->rect.width *
+        (sfSprite_getScale(bird->sprite).x * -1)) && (posM.y <= posB.y && posM.y
+        >= posB.y - bird->rect.height * sfSprite_getScale(bird->sprite).y))
+            return 1;
     return (0);
 }
 
@@ -43,7 +45,9 @@ sfVector2i posM)
         }
 }
 
-void mouse_click_left(csfml_struct *csfml_options, birds_list *birds, game_struct *game)
+void mouse_click_left(csfml_struct *csfml_options,
+birds_list *birds,
+game_struct *game)
 {
     birds_list *bird = birds;
     sfVector2i posM = sfMouse_getPositionRenderWindow(csfml_options->window);
@@ -56,7 +60,8 @@ void mouse_click_left(csfml_struct *csfml_options, birds_list *birds, game_struc
             bird->alive = 0;
             bird->direction = rand() % 2;
             bird->position.x = rand() % csfml_options->mode.width;
-            bird->position.y = game->spawn_min + rand() % (game->spawn_max + 1 - game->spawn_min);
+            bird->position.y = (game->spawn_min + rand() %
+            (game->spawn_max + 1 - game->spawn_min));
             sfSprite_setPosition(bird->sprite, bird->position);
             game->score += 1;
         }

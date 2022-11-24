@@ -11,33 +11,23 @@
 game_struct init_game_struct(game_struct *game)
 {
     game->spawnRatio = 9900;
-    game->bot_scale = 0.5;
     game->spawn_max = 620;
     game->spawn_min = 480;
     game->intro_sound = sfMusic_createFromFile("sounds/musics/intro.ogg");
-    game->crosshair_texture = sfTexture_createFromFile("assets/crosshair1.png",
-    NULL);
+    game->crosshair_texture = sfTexture_createFromFile("assets/c2.png", NULL);
     game->crosshair_sprite = sfSprite_create();
-    game->startb_texture = sfTexture_createFromFile("assets/gui/startb.png",
-    NULL);
+    game->startb_texture = sfTexture_createFromFile("assets/gui/sb.png", NULL);
     game->startb_rect = (sfIntRect){0, 0, 366, 74};
     game->startb_sprite = sfSprite_create();
     game->startb_click = sfMusic_createFromFile("sounds/gui/button2.ogg");
     game->startb_hover = sfMusic_createFromFile("sounds/gui/button1.ogg");
-    game->page1_texture = sfTexture_createFromFile("assets/gui/page1.png",
-    NULL);
+    game->page1_texture = sfTexture_createFromFile("assets/gui/p1.png", NULL);
     game->page1_sprite = sfSprite_create();
-    game->intro_sprite = sfSprite_create();
-    game->intro_texture = sfTexture_createFromFile("assets/gui/intro_back.jpg",
-    NULL);
     game->shoot_sound = sfMusic_createFromFile("sounds/vandal/vandal1.ogg");
     game->started = 0;
     game->text = sfText_create();
     game->font = sfFont_createFromFile("fonts/valorant.ttf");
     game->score = 0;
-    sfText_setColor(game->text, sfColor_fromRGB(152, 196, 200));
-    sfText_setFont(game->text, game->font);
-    sfText_setCharacterSize(game->text, 50);
 }
 
 csfml_struct init_struct(csfml_struct *csfml_options)
@@ -55,15 +45,14 @@ csfml_struct init_struct(csfml_struct *csfml_options)
 birds_list new_bird(birds_list **birds, int i, int type, game_struct *game)
 {
     birds_list *bird = malloc(sizeof(*bird));
-
-
     bird->texture = sfTexture_createFromFile("assets/bot-rec.png", NULL);
     bird->rect = (sfIntRect){0, 0, 167, 447};
     bird->sprite = sfSprite_create();
     bird->dead_sound = sfMusic_createFromFile("sounds/die/die1.ogg");
     bird->spawn_sound = sfMusic_createFromFile("sounds/spawn/spawn1.ogg");
     bird->position.x = rand() % 880;
-    bird->position.y = game->spawn_min + rand() % (game->spawn_max + 1 - game->spawn_min);
+    bird->position.y = (game->spawn_min + rand() %
+    (game->spawn_max + 1 - game->spawn_min));
     bird->rect_count = 0;
     bird->rect_speed = 8;
     bird->direction = rand() % 2;
@@ -72,8 +61,6 @@ birds_list new_bird(birds_list **birds, int i, int type, game_struct *game)
     bird->type = type;
     sfMusic_setVolume(bird->dead_sound, 10);
     sfSprite_setOrigin(bird->sprite, (sfVector2f){0, bird->rect.height});
-    sfSprite_setTexture(bird->sprite, bird->texture, sfTrue);
-    sfSprite_setTextureRect(bird->sprite, bird->rect);
     sfSprite_setPosition(bird->sprite, bird->position);
     bird->next = *birds;
     *birds = bird;

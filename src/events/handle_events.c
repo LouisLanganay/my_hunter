@@ -7,7 +7,9 @@
 
 #include "../../includes/hunter.h"
 
-void handle_events(csfml_struct *csfml_options, birds_list *birds, game_struct *game)
+void handle_events(csfml_struct *csfml_options,
+birds_list *birds,
+game_struct *game)
 {
     sfRenderWindow_pollEvent(csfml_options->window, &csfml_options->event);
     if (csfml_options->event.type == sfEvtClosed)
