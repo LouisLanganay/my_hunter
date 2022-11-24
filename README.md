@@ -13,6 +13,8 @@ The basic rules for the my_hunter are as follows:
 I've been playing Valorant for a while so I had the idea of trying to replicate the Valorant shooting range.
 It's kind of the same as a classic my_hunter, the graphics are just different.
 
+![Valorant](https://i.ytimg.com/vi/pc0Ft07JgkU/maxresdefault.jpg)
+
 ## How To Play ?
 
 To compile this project run the following command at `.`
