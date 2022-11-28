@@ -8,12 +8,14 @@
 #include "../../includes/hunter.h"
 #include "../../includes/my.h"
 
-void set_textures(csfml_struct *csfml_options, birds_list *birds)
+void set_textures(csfml_struct *csfml_options,
+birds_list *birds,
+game_struct *game)
 {
     birds_list *bird = birds;
     for (int i = 0; i < 10; i++) {
         bird->rect_count += 1;
-        bird_moovment(bird, csfml_options);
+        bird_moovment(bird, csfml_options, game);
         sfSprite_setTexture(bird->sprite, bird->texture, sfTrue);
         sfSprite_setTextureRect(bird->sprite, bird->rect);
         sfSprite_setPosition(bird->sprite, bird->position);
@@ -48,7 +50,8 @@ void draw(csfml_struct *csfml_options, game_struct *game, birds_list *birds)
     draw_text(csfml_options, game);
     draw_bots(birds, csfml_options);
     draw_croshair(csfml_options, game);
-    draw_vandal(csfml_options);
+    draw_vandal(csfml_options, game);
+    draw_resume_button(csfml_options, game);
 }
 
 void create_window(csfml_struct *csfml_options,
@@ -62,13 +65,13 @@ void create_window(csfml_struct *csfml_options,
         return;
     sfRenderWindow_setFramerateLimit(csfml_options->window, 60);
     set_background(csfml_options, game);
-    set_textures(csfml_options, birds);
+    set_textures(csfml_options, birds, game);
     while (sfRenderWindow_isOpen(csfml_options->window)) {
         time = sfClock_getElapsedTime(csfml_options->clock);
         seconds = time.microseconds / 1000000.0;
         if (seconds > 0.01) {
             handle_events(csfml_options, birds, game, vandal_sounds);
-            set_textures(csfml_options, birds);
+            set_textures(csfml_options, birds, game);
             sfClock_restart(csfml_options->clock);
         }
         draw(csfml_options, game, birds);

@@ -25,9 +25,6 @@ vandal_sounds_s init_vandal_sounds(vandal_sounds_s *vandal_sounds)
 
 game_struct init_game_struct(game_struct *game)
 {
-    game->spawnRatio = 9900;
-    game->spawn_max = 620;
-    game->spawn_min = 480;
     game->intro_sound = sfMusic_createFromFile("sounds/musics/intro.ogg");
     game->crosshair_texture = sfTexture_createFromFile("assets/c2.png", NULL);
     game->crosshair_sprite = sfSprite_create();
@@ -42,6 +39,7 @@ game_struct init_game_struct(game_struct *game)
     game->text = sfText_create();
     game->text2 = sfText_create();
     game->font = sfFont_createFromFile("fonts/valorant.ttf");
+    game->paused = 0;
     game->score = 0;
     game->remaining = 20;
 }

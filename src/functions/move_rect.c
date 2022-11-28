@@ -39,8 +39,12 @@ void bird_moovment_pos(birds_list *bird, csfml_struct *csfml_options)
         bird->direction = 1;
 }
 
-void bird_moovment(birds_list *bird, csfml_struct *csfml_options)
+void bird_moovment(birds_list *bird,
+csfml_struct *csfml_options,
+game_struct *game)
 {
+    if (game->paused == 1)
+        return;
     if (bird->rect_count >= bird->rect_speed)
         bird_moovment_annim(bird);
     bird_moovment_pos(bird, csfml_options);

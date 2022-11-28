@@ -42,17 +42,19 @@ float vandal_position(csfml_struct *csfml_options)
     return calc;
 }
 
-void draw_vandal(csfml_struct *csfml_options)
+void draw_vandal(csfml_struct *csfml_options, game_struct *game)
 {
     sfSprite_setTexture(csfml_options->vandal_sprite,
     csfml_options->vandal_texture, sfTrue);
     sfSprite_setTextureRect(csfml_options->vandal_sprite,
     csfml_options->vandal_rect);
-    sfSprite_setRotation(csfml_options->vandal_sprite,
-        vandal_rotation(csfml_options));
     sfSprite_setScale(csfml_options->vandal_sprite, (sfVector2f){0.4, 0.4});
-    sfSprite_setPosition(csfml_options->vandal_sprite,
-        (sfVector2f){vandal_position(csfml_options), 400});
+    if (game->paused == 0) {
+        sfSprite_setRotation(csfml_options->vandal_sprite,
+            vandal_rotation(csfml_options));
+        sfSprite_setPosition(csfml_options->vandal_sprite,
+            (sfVector2f){vandal_position(csfml_options), 400});
+    }
     sfRenderWindow_drawSprite(csfml_options->window,
     csfml_options->vandal_sprite, NULL);
     csfml_options->vandal_rect.left = 0;

@@ -16,8 +16,8 @@ birds_list new_bird(birds_list **birds, int i, int type, game_struct *game)
     bird->dead_sound = sfMusic_createFromFile("sounds/die/die1.ogg");
     bird->spawn_sound = sfMusic_createFromFile("sounds/spawn/spawn1.ogg");
     bird->position.x = rand() % 880;
-    bird->position.y = (game->spawn_min + rand() %
-    (game->spawn_max + 1 - game->spawn_min));
+    bird->position.y = (480 + rand() %
+    (620 + 1 - 480));
     bird->rect_count = 0;
     bird->rect_speed = 8;
     bird->direction = rand() % 2;

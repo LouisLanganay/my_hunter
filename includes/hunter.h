@@ -44,10 +44,8 @@
         sfFont* font;
         sfText* text2;
         int startb_hovered;
-        int spawnRatio;
+        int paused;
         int started;
-        int spawn_max;
-        int spawn_min;
         int score;
         int remaining;
     } game_struct;
@@ -105,7 +103,9 @@
                         game_struct *game,
                         vandal_sounds_s *vandal_sounds);
 
-    void bird_moovment(birds_list *bird, csfml_struct *csfml_options);
+    void bird_moovment(birds_list *bird,
+    csfml_struct *csfml_options,
+    game_struct *game);
 
     int check_arguments(int ac, char **av);
 
@@ -117,8 +117,16 @@
 
     void draw_croshair(csfml_struct *csfml_options, game_struct *game);
 
-    void draw_vandal(csfml_struct *csfml_options);
+    void draw_vandal(csfml_struct *csfml_options, game_struct *game);
 
     void create_bird_list(birds_list **birds, game_struct *game);
+
+    csfml_struct init_struct(csfml_struct *csfml_options);
+
+    game_struct init_game_struct(game_struct *game);
+
+    void pause_game(csfml_struct *csfml_options, game_struct *game);
+
+    void draw_resume_button(csfml_struct *csfml_options, game_struct *game);
 
 #endif

@@ -35,7 +35,14 @@ void enter_range(csfml_struct *csfml_options, game_struct *game)
             game->startb_hovered = 0;
             game->startb_rect.left = 0;
         }
-    enter_range_draw(csfml_options, game);
+    if (game->started == 0)
+        enter_range_draw(csfml_options, game);
+}
+
+void game_end_event(csfml_struct *csfml_options, game_struct *game)
+{
+    init_game_struct(game);
+    sfRenderWindow_setMouseCursorVisible(csfml_options->window, sfTrue);
 }
 
 int bot_remaining(birds_list *birds,
@@ -43,6 +50,8 @@ csfml_struct *csfml_options,
 game_struct *game)
 {
     int remaining = game->remaining - game->score;
+    if (remaining == 0)
+        game_end_event(csfml_options, game);
     int spawned = 0;
     for (int i = 0; i < 10; i++) {
         if (birds->alive == 1)
@@ -57,9 +66,9 @@ csfml_struct *csfml_options,
 game_struct *game)
 {
     int ratio = rand() % 10000;
-    if (game->started == 0)
+    if (game->started == 0 || game->paused == 1)
         return enter_range(csfml_options, game);
-    if (game->spawnRatio > ratio || game->started == 0 ||
+    if (9900 > ratio || game->started == 0 ||
         bot_remaining(birds, csfml_options, game) < 1)
         return;
     for (int i = 0; i < 10; i++) {

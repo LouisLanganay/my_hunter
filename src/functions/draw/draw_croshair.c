@@ -10,6 +10,8 @@
 
 void draw_croshair(csfml_struct *csfml_options, game_struct *game)
 {
+    if (game->paused == 1)
+        return;
     sfRenderWindow_setMouseCursorVisible(csfml_options->window, sfFalse);
     sfSprite_setTexture(game->crosshair_sprite, game->crosshair_texture,
     sfTrue);

@@ -39,6 +39,10 @@ sfVector2i posM)
     sfVector2f posB = sfSprite_getPosition(game->startb_sprite);
     if (posM.x >= posB.x && posM.x <= posB.x + game->startb_rect.width)
         if (posM.y >= posB.y && posM.y <= posB.y + game->startb_rect.height) {
+            if (game->started == 1) {
+                game->paused = 0;
+                return;
+            }
             sfRenderWindow_clear(csfml_options->window, sfBlack);
             sfRenderWindow_drawSprite(csfml_options->window,
                 csfml_options->intro_sprite, NULL);
@@ -47,6 +51,7 @@ sfVector2i posM)
             sfMusic_play(game->startb_click);
             sfMusic_play(game->intro_sound);
             sfSleep(sfSeconds(1));
+            game->paused = 0;
         }
 }
 
@@ -66,7 +71,7 @@ vandal_sounds_s *vandal_sounds)
 {
     birds_list *bird = birds;
     sfVector2i posM = sfMouse_getPositionRenderWindow(csfml_options->window);
-    if (game->started == 0)
+    if (game->started == 0 || game->paused == 1)
         return start_button(csfml_options, game, posM);
     vandal_shoot(csfml_options, game, vandal_sounds);
     for (int i = 0; i < 10; i++) {
@@ -76,8 +81,8 @@ vandal_sounds_s *vandal_sounds)
             bird->alive = 0;
             bird->direction = rand() % 2;
             bird->position.x = rand() % csfml_options->mode.width;
-            bird->position.y = (game->spawn_min + rand() %
-            (game->spawn_max + 1 - game->spawn_min));
+            bird->position.y = (480 + rand() %
+            (620 + 1 - 480));
             sfSprite_setPosition(bird->sprite, bird->position);
             game->score += 1;
         }
