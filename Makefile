@@ -18,6 +18,7 @@ PROJECT_FILES = 	src/functions/create_window.c		\
 					src/functions/draw/draw_text.c			\
 					src/functions/draw/draw_croshair.c		\
 					src/functions/draw/draw_vandal.c		\
+					src/functions/create_bird_list.c
 
 SRC	=	lib/my/my_compute_power_rec.c		\
 		lib/my/my_compute_square_root.c	\

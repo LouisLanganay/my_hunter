@@ -53,7 +53,8 @@ void draw(csfml_struct *csfml_options, game_struct *game, birds_list *birds)
 
 void create_window(csfml_struct *csfml_options,
                     birds_list *birds,
-                    game_struct *game)
+                    game_struct *game,
+                    vandal_sounds_s *vandal_sounds)
 {
     sfTime time;
     float seconds;
@@ -66,7 +67,7 @@ void create_window(csfml_struct *csfml_options,
         time = sfClock_getElapsedTime(csfml_options->clock);
         seconds = time.microseconds / 1000000.0;
         if (seconds > 0.01) {
-            handle_events(csfml_options, birds, game);
+            handle_events(csfml_options, birds, game, vandal_sounds);
             set_textures(csfml_options, birds);
             sfClock_restart(csfml_options->clock);
         }

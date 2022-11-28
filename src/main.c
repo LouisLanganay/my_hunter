@@ -8,6 +8,21 @@
 #include "../includes/my.h"
 #include "../includes/hunter.h"
 
+vandal_sounds_s init_vandal_sounds(vandal_sounds_s *vandal_sounds)
+{
+    vandal_sounds->shoot_sound1 = sfMusic_createFromFile(
+        "./sounds/vandal/vandal1.ogg");
+    vandal_sounds->shoot_sound2 = sfMusic_createFromFile(
+        "./sounds/vandal/vandal2.ogg");
+    vandal_sounds->shoot_sound3 = sfMusic_createFromFile(
+        "./sounds/vandal/vandal3.ogg");
+    vandal_sounds->shoot_sound4 = sfMusic_createFromFile(
+        "./sounds/vandal/vandal4.ogg");
+    vandal_sounds->shoot_sound5 = sfMusic_createFromFile(
+        "./sounds/vandal/vandal5.ogg");
+    vandal_sounds->count = 0;
+}
+
 game_struct init_game_struct(game_struct *game)
 {
     game->spawnRatio = 9900;
@@ -23,11 +38,12 @@ game_struct init_game_struct(game_struct *game)
     game->startb_hover = sfMusic_createFromFile("sounds/gui/button1.ogg");
     game->page1_texture = sfTexture_createFromFile("assets/gui/p1.png", NULL);
     game->page1_sprite = sfSprite_create();
-    game->shoot_sound = sfMusic_createFromFile("sounds/vandal/vandal1.ogg");
     game->started = 0;
     game->text = sfText_create();
+    game->text2 = sfText_create();
     game->font = sfFont_createFromFile("fonts/valorant.ttf");
     game->score = 0;
+    game->remaining = 20;
 }
 
 csfml_struct init_struct(csfml_struct *csfml_options)
@@ -44,37 +60,12 @@ csfml_struct init_struct(csfml_struct *csfml_options)
     "./assets/gui/vandal.png", NULL);
     csfml_options->vandal_sprite = sfSprite_create();
     csfml_options->vandal_rect = (sfIntRect){0, 0, 913, 520};
-}
-
-birds_list new_bird(birds_list **birds, int i, int type, game_struct *game)
-{
-    birds_list *bird = malloc(sizeof(*bird));
-    bird->texture = sfTexture_createFromFile("assets/bot-rec.png", NULL);
-    bird->rect = (sfIntRect){0, 0, 167, 447};
-    bird->sprite = sfSprite_create();
-    bird->dead_sound = sfMusic_createFromFile("sounds/die/die1.ogg");
-    bird->spawn_sound = sfMusic_createFromFile("sounds/spawn/spawn1.ogg");
-    bird->position.x = rand() % 880;
-    bird->position.y = (game->spawn_min + rand() %
-    (game->spawn_max + 1 - game->spawn_min));
-    bird->rect_count = 0;
-    bird->rect_speed = 8;
-    bird->direction = rand() % 2;
-    bird->alive = 0;
-    bird->bird_id = i;
-    bird->type = type;
-    sfMusic_setVolume(bird->dead_sound, 10);
-    sfSprite_setOrigin(bird->sprite, (sfVector2f){0, bird->rect.height});
-    sfSprite_setPosition(bird->sprite, bird->position);
-    bird->next = *birds;
-    *birds = bird;
-}
-
-void create_bird_list(birds_list **birds, game_struct *game)
-{
-    for (int i = 0; i < 10; i++) {
-        new_bird(birds, i, 0, game);
-    }
+    csfml_options->intro_texture = sfTexture_createFromFile(
+        "./assets/gui/intro_back.png", NULL);
+    csfml_options->intro_sprite = sfSprite_create();
+    sfSprite_setTexture(csfml_options->intro_sprite,
+        csfml_options->intro_texture, sfTrue);
+    sfSprite_setScale(csfml_options->intro_sprite, (sfVector2f){0.6, 0.6});
 }
 
 int main(int ac, char **av)
@@ -84,13 +75,16 @@ int main(int ac, char **av)
     csfml_struct *csfml_options = malloc(sizeof(csfml_struct));
     birds_list *birds = malloc(sizeof(birds_list));
     game_struct *game = malloc(sizeof(game_struct));
+    vandal_sounds_s *vandal_sounds = malloc(sizeof(vandal_sounds_s));
     init_struct(csfml_options);
+    init_vandal_sounds(vandal_sounds);
     init_game_struct(game);
     create_bird_list(&birds, game);
-    create_window(csfml_options, birds, game);
-    destroy_window(csfml_options, birds, game);
+    create_window(csfml_options, birds, game, vandal_sounds);
+    destroy_window(csfml_options, birds, game, vandal_sounds);
     free(csfml_options);
     free(birds);
     free(game);
+    free(vandal_sounds);
     return 0;
 }

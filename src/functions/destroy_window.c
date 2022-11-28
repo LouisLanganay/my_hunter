@@ -9,15 +9,21 @@
 
 void destroy_other(csfml_struct *csfml_options,
 birds_list *birds,
-game_struct *game)
+game_struct *game,
+vandal_sounds_s *vandal_sounds)
 {
     sfSprite_destroy(csfml_options->sprite);
     sfTexture_destroy(csfml_options->texture);
     sfSprite_destroy(game->crosshair_sprite);
     sfTexture_destroy(game->crosshair_texture);
+    sfMusic_destroy(vandal_sounds->shoot_sound1);
+    sfMusic_destroy(vandal_sounds->shoot_sound2);
+    sfMusic_destroy(vandal_sounds->shoot_sound3);
+    sfMusic_destroy(vandal_sounds->shoot_sound4);
+    sfMusic_destroy(vandal_sounds->shoot_sound5);
     sfMusic_destroy(game->intro_sound);
-    sfMusic_destroy(game->shoot_sound);
     sfText_destroy(game->text);
+    sfText_destroy(game->text2);
     sfFont_destroy(game->font);
     sfSprite_destroy(game->startb_sprite);
     sfTexture_destroy(game->startb_texture);
@@ -28,7 +34,8 @@ game_struct *game)
 
 void destroy_window(csfml_struct *csfml_options,
 birds_list *birds,
-game_struct *game)
+game_struct *game,
+vandal_sounds_s *vandal_sounds)
 {
     birds_list *bird = birds;
     for (int i = 0; i < 10; i++) {
@@ -38,5 +45,5 @@ game_struct *game)
         sfMusic_destroy(bird->spawn_sound);
         bird = bird->next;
     }
-    destroy_other(csfml_options, birds, game);
+    destroy_other(csfml_options, birds, game, vandal_sounds);
 }

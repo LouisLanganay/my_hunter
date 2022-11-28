@@ -13,7 +13,15 @@
 float vandal_rotation(csfml_struct *csfml_options)
 {
     sfVector2i pos = sfMouse_getPositionRenderWindow(csfml_options->window);
-    float x = pos.x;
+    float x;
+    if (pos.x > csfml_options->mode.width || pos.x < 0) {
+        if (pos.x < 0)
+            x = 0;
+        else
+            x = csfml_options->mode.width;
+    } else {
+        x = pos.x;
+    }
     float calc = my_compute_power_rec(x / 300.0, 3);
     return calc;
 }
@@ -21,7 +29,15 @@ float vandal_rotation(csfml_struct *csfml_options)
 float vandal_position(csfml_struct *csfml_options)
 {
     sfVector2i pos = sfMouse_getPositionRenderWindow(csfml_options->window);
-    float x = pos.x;
+    float x;
+    if (pos.x > csfml_options->mode.width || pos.x < 0) {
+        if (pos.x < 0)
+            x = 0;
+        else
+            x = csfml_options->mode.width;
+    } else {
+        x = pos.x;
+    }
     float calc = my_compute_power_rec(x / 100.0, 2) + 520;
     return calc;
 }
