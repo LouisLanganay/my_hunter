@@ -23,16 +23,35 @@ vandal_sounds_s init_vandal_sounds(vandal_sounds_s *vandal_sounds)
     vandal_sounds->count = 0;
 }
 
+buttons_struct init_buttons_struct(game_struct *game)
+{
+    game->btn->startb_texture = sfTexture_createFromFile("assets/gui/sb.png",
+        NULL);
+    game->btn->startb_rect = (sfIntRect){0, 0, 366, 74};
+    game->btn->startb_sprite = sfSprite_create();
+    game->btn->startb_hovered = 0;
+
+    game->btn->exitb_texture = sfTexture_createFromFile("assets/gui/eb.png",
+        NULL);
+    game->btn->exitb_rect = (sfIntRect){0, 0, 395, 74};
+    game->btn->exitb_sprite = sfSprite_create();
+    game->btn->exitb_hovered = 0;
+    game->btn->closeb_texture = sfTexture_createFromFile("assets/gui/cb.png",
+        NULL);
+    game->btn->closeb_rect = (sfIntRect){0, 0, 352, 74};
+    game->btn->closeb_sprite = sfSprite_create();
+    game->btn->closeb_hovered = 0;
+}
+
 game_struct init_game_struct(game_struct *game)
 {
     game->intro_sound = sfMusic_createFromFile("sounds/musics/intro.ogg");
     game->crosshair_texture = sfTexture_createFromFile("assets/c2.png", NULL);
     game->crosshair_sprite = sfSprite_create();
-    game->startb_texture = sfTexture_createFromFile("assets/gui/sb.png", NULL);
-    game->startb_rect = (sfIntRect){0, 0, 366, 74};
-    game->startb_sprite = sfSprite_create();
-    game->startb_click = sfMusic_createFromFile("sounds/gui/button2.ogg");
-    game->startb_hover = sfMusic_createFromFile("sounds/gui/button1.ogg");
+    game->btn = malloc(sizeof(buttons_struct));
+    init_buttons_struct(game);
+    game->b_click = sfMusic_createFromFile("sounds/gui/button2.ogg");
+    game->b_hover = sfMusic_createFromFile("sounds/gui/button1.ogg");
     game->page1_texture = sfTexture_createFromFile("assets/gui/p1.png", NULL);
     game->page1_sprite = sfSprite_create();
     game->started = 0;

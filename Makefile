@@ -21,6 +21,8 @@ PROJECT_FILES = 	src/functions/create_window.c		\
 					src/functions/create_bird_list.c	\
 					src/events/pause_game.c				\
 					src/functions/draw/draw_buttons.c	\
+					src/events/buttons.c				\
+					src/functions/buttons_states.c		\
 
 SRC	=	lib/my/my_compute_power_rec.c		\
 		lib/my/my_compute_square_root.c	\

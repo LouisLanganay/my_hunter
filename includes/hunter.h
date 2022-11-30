@@ -29,21 +29,33 @@
         int count;
     } vandal_sounds_s;
 
+    typedef struct buttons_struct {
+        sfTexture* startb_texture;
+        sfSprite* startb_sprite;
+        sfIntRect startb_rect;
+        int startb_hovered;
+        sfTexture* exitb_texture;
+        sfSprite* exitb_sprite;
+        sfIntRect exitb_rect;
+        int exitb_hovered;
+        sfTexture* closeb_texture;
+        sfSprite* closeb_sprite;
+        sfIntRect closeb_rect;
+        int closeb_hovered;
+    } buttons_struct;
+
     typedef struct game_struct {
         sfMusic* intro_sound;
         sfTexture* crosshair_texture;
         sfSprite* crosshair_sprite;
-        sfTexture* startb_texture;
         sfTexture* page1_texture;
         sfSprite* page1_sprite;
-        sfSprite* startb_sprite;
-        sfIntRect startb_rect;
-        sfMusic* startb_click;
-        sfMusic* startb_hover;
+        buttons_struct *btn;
+        sfMusic* b_click;
+        sfMusic* b_hover;
         sfText* text;
         sfFont* font;
         sfText* text2;
-        int startb_hovered;
         int paused;
         int started;
         int score;
@@ -128,5 +140,23 @@
     void pause_game(csfml_struct *csfml_options, game_struct *game);
 
     void draw_resume_button(csfml_struct *csfml_options, game_struct *game);
+
+    void draw_exit_button(csfml_struct *csfml_options, game_struct *game);
+
+    void draw_close_button(csfml_struct *csfml_options, game_struct *game);
+
+    void start_button(csfml_struct *csfml_options,
+        game_struct *game,
+        sfVector2i posM);
+    
+    void exit_button(csfml_struct *csfml_options,
+        game_struct *game,
+        sfVector2i posM);
+
+    void close_button(csfml_struct *csfml_options,
+        game_struct *game,
+        sfVector2i posM);
+
+    void buttons_states(csfml_struct *csfml_options, game_struct *game);
 
 #endif

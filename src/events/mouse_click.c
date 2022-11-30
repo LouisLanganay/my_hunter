@@ -32,29 +32,6 @@ void dead_sound(birds_list *bird)
     }
 }
 
-void start_button(csfml_struct *csfml_options,
-game_struct *game,
-sfVector2i posM)
-{
-    sfVector2f posB = sfSprite_getPosition(game->startb_sprite);
-    if ((posM.x >= posB.x && posM.x <= posB.x + game->startb_rect.width) &&
-        (posM.y >= posB.y && posM.y <= posB.y + game->startb_rect.height)) {
-            if (game->started == 1) {
-                game->paused = 0;
-                return;
-            }
-            sfRenderWindow_clear(csfml_options->window, sfBlack);
-            sfRenderWindow_drawSprite(csfml_options->window,
-                csfml_options->intro_sprite, NULL);
-            sfRenderWindow_display(csfml_options->window);
-            game->started = 1;
-            sfMusic_play(game->startb_click);
-            sfMusic_play(game->intro_sound);
-            sfSleep(sfSeconds(10));
-            game->paused = 0;
-        }
-}
-
 void vandal_shoot(csfml_struct *csfml_options,
 game_struct *game,
 vandal_sounds_s *vandal_sounds)
@@ -64,6 +41,22 @@ vandal_sounds_s *vandal_sounds)
     sfMusic_play(vandal_sounds->shoot_sound1);
 }
 
+int check_buttons_click(csfml_struct *csfml_options,
+    game_struct *game,
+    sfVector2i posM)
+{
+    if (game->started == 0) {
+        start_button(csfml_options, game, posM);
+        return 1;
+    }
+    if (game->started == 1 && game->paused == 1) {
+        exit_button(csfml_options, game, posM);
+        close_button(csfml_options, game, posM);
+        return 1;
+    }
+    return 0;
+}
+
 void mouse_click_left(csfml_struct *csfml_options,
 birds_list *birds,
 game_struct *game,
@@ -71,8 +64,8 @@ vandal_sounds_s *vandal_sounds)
 {
     birds_list *bird = birds;
     sfVector2i posM = sfMouse_getPositionRenderWindow(csfml_options->window);
-    if (game->started == 0 || game->paused == 1)
-        return start_button(csfml_options, game, posM);
+    if (check_buttons_click(csfml_options, game, posM) != 0)
+        return;
     vandal_shoot(csfml_options, game, vandal_sounds);
     for (int i = 0; i < 10; i++) {
         sfVector2f posB = sfSprite_getPosition(bird->sprite);

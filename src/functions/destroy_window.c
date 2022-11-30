@@ -25,8 +25,8 @@ vandal_sounds_s *vandal_sounds)
     sfText_destroy(game->text);
     sfText_destroy(game->text2);
     sfFont_destroy(game->font);
-    sfSprite_destroy(game->startb_sprite);
-    sfTexture_destroy(game->startb_texture);
+    sfSprite_destroy(game->btn->startb_sprite);
+    sfTexture_destroy(game->btn->startb_texture);
     sfTexture_destroy(csfml_options->vandal_texture);
     sfSprite_destroy(csfml_options->vandal_sprite);
     sfRenderWindow_destroy(csfml_options->window);
