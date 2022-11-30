@@ -57,9 +57,11 @@ Then run the game:
 - [x] Point crosshair
 - [x] Replace birds by bots
 - [x] Start game button
-- [ ] Stop game button
+- [x] Stop game button
 - [x] Score
-- [ ] Timer
+- [x] Bot remaining
+- [ ] Block window size
+- [ ] Settings window
 
 ## Authors
 
