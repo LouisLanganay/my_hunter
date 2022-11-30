@@ -37,8 +37,8 @@ game_struct *game,
 sfVector2i posM)
 {
     sfVector2f posB = sfSprite_getPosition(game->startb_sprite);
-    if (posM.x >= posB.x && posM.x <= posB.x + game->startb_rect.width)
-        if (posM.y >= posB.y && posM.y <= posB.y + game->startb_rect.height) {
+    if ((posM.x >= posB.x && posM.x <= posB.x + game->startb_rect.width) &&
+        (posM.y >= posB.y && posM.y <= posB.y + game->startb_rect.height)) {
             if (game->started == 1) {
                 game->paused = 0;
                 return;
