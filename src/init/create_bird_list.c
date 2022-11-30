@@ -24,7 +24,6 @@ birds_list new_bird(birds_list **birds, int i, int type, game_struct *game)
     bird->alive = 0;
     bird->bird_id = i;
     bird->type = type;
-    sfMusic_setVolume(bird->dead_sound, 10);
     sfSprite_setOrigin(bird->sprite, (sfVector2f){0, bird->rect.height});
     sfSprite_setPosition(bird->sprite, bird->position);
     bird->next = *birds;

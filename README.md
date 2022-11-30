@@ -60,8 +60,10 @@ Then run the game:
 - [x] Stop game button
 - [x] Score
 - [x] Bot remaining
-- [ ] Block window size
-- [ ] Settings window
+- [x] Block window size
+- Settings scene:
+- [x] Volume
+- [ ] Crosshair color
 
 ## Authors
 

@@ -42,6 +42,8 @@
         sfSprite* closeb_sprite;
         sfIntRect closeb_rect;
         int closeb_hovered;
+        sfTexture* slider_texture;
+        sfSprite* slider_sprite;
     } buttons_struct;
 
     typedef struct scenes_struct {
@@ -66,6 +68,7 @@
         int started;
         int score;
         int remaining;
+        int general_vol;
     } game_struct;
 
     typedef struct birds_list {
@@ -153,6 +156,8 @@
 
     void draw_close_button(csfml_struct *csfml_options, game_struct *game);
 
+    void draw_slider(csfml_struct *csfml_options, game_struct *game);
+
     void start_button(csfml_struct *csfml_options,
         game_struct *game,
         sfVector2i posM);
@@ -170,5 +175,10 @@
     void enter_range_draw(csfml_struct *csfml_options, game_struct *game);
 
     void settings_draw(csfml_struct *csfml_options, game_struct *game);
+
+    void set_musics_volume(csfml_struct *csfml_options,
+        game_struct *game,
+        vandal_sounds_s *vandal_sounds,
+        birds_list *birds);
 
 #endif

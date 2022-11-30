@@ -17,4 +17,5 @@ void settings_draw(csfml_struct *csfml_options, game_struct *game)
 
     draw_exit_button(csfml_options, game);
     draw_close_button(csfml_options, game);
+    draw_slider(csfml_options, game);
 }

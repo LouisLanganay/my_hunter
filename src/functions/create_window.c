@@ -75,6 +75,7 @@ void create_window(csfml_struct *csfml_options,
         }
         draw(csfml_options, game, birds);
         game_events(birds, csfml_options, game);
+        set_musics_volume(csfml_options, game, vandal_sounds, birds);
         sfRenderWindow_display(csfml_options->window);
     }
 }

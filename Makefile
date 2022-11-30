@@ -18,7 +18,7 @@ PROJECT_FILES = 	src/functions/create_window.c		\
 					src/functions/draw/draw_text.c		\
 					src/functions/draw/draw_croshair.c	\
 					src/functions/draw/draw_vandal.c	\
-					src/functions/create_bird_list.c	\
+					src/init/create_bird_list.c			\
 					src/events/pause_game.c				\
 					src/functions/draw/draw_buttons.c	\
 					src/events/buttons.c				\
@@ -28,6 +28,7 @@ PROJECT_FILES = 	src/functions/create_window.c		\
 					src/init/init_csfml_struct.c		\
 					src/init/init_game_struct.c			\
 					src/init/init_vandal_sounds.c		\
+					src/settings/volume.c				\
 
 SRC	=	lib/my/my_compute_power_rec.c		\
 		lib/my/my_compute_square_root.c	\

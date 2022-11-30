@@ -14,7 +14,6 @@ buttons_struct init_buttons_struct(game_struct *game)
     game->btn->startb_rect = (sfIntRect){0, 0, 366, 74};
     game->btn->startb_sprite = sfSprite_create();
     game->btn->startb_hovered = 0;
-
     game->btn->exitb_texture = sfTexture_createFromFile("assets/gui/eb.png",
         NULL);
     game->btn->exitb_rect = (sfIntRect){0, 0, 395, 74};
@@ -25,6 +24,9 @@ buttons_struct init_buttons_struct(game_struct *game)
     game->btn->closeb_rect = (sfIntRect){0, 0, 352, 74};
     game->btn->closeb_sprite = sfSprite_create();
     game->btn->closeb_hovered = 0;
+    game->btn->slider_texture = sfTexture_createFromFile(
+        "assets/gui/slider.png", NULL);
+    game->btn->slider_sprite = sfSprite_create();
 }
 
 scenes_struct init_scenes_struct(game_struct *game)
@@ -35,6 +37,7 @@ scenes_struct init_scenes_struct(game_struct *game)
     game->scenes->settings_texture = sfTexture_createFromFile(
         "assets/gui/settingsbg.png", NULL);
     game->scenes->settings_sprite = sfSprite_create();
+    sfSprite_setScale(game->scenes->settings_sprite, (sfVector2f){0.5, 0.5});
 }
 
 game_struct init_game_struct(game_struct *game)
@@ -55,4 +58,5 @@ game_struct init_game_struct(game_struct *game)
     game->paused = 0;
     game->score = 0;
     game->remaining = 20;
+    game->general_vol = 100;
 }

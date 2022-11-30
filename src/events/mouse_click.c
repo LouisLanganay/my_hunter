@@ -24,9 +24,10 @@ int bird_hit_or_not(sfVector2i posM, sfVector2f posB, birds_list *bird)
     return (0);
 }
 
-void dead_sound(birds_list *bird)
+void dead_sound(birds_list *bird, game_struct *game)
 {
     if (bird->dead_sound != NULL) {
+        sfMusic_setVolume(bird->dead_sound, (game->general_vol * 20) / 100);
         sfMusic_setPlayingOffset(bird->dead_sound, sfSeconds(0));
         sfMusic_play(bird->dead_sound);
     }
@@ -45,13 +46,13 @@ int check_buttons_click(csfml_struct *csfml_options,
     game_struct *game,
     sfVector2i posM)
 {
-    if (game->started == 0) {
-        start_button(csfml_options, game, posM);
-        return 1;
-    }
-    if (game->started == 1 && game->paused == 1) {
+    if (game->paused == 1) {
         exit_button(csfml_options, game, posM);
         close_button(csfml_options, game, posM);
+        return 1;
+    }
+    if (game->started == 0) {
+        start_button(csfml_options, game, posM);
         return 1;
     }
     return 0;
@@ -70,7 +71,7 @@ vandal_sounds_s *vandal_sounds)
     for (int i = 0; i < 10; i++) {
         sfVector2f posB = sfSprite_getPosition(bird->sprite);
         if (bird_hit_or_not(posM, posB, bird) == 1) {
-            dead_sound(bird);
+            dead_sound(bird, game);
             bird->alive = 0;
             bird->direction = rand() % 2;
             bird->position.x = rand() % csfml_options->mode.width;

@@ -65,12 +65,25 @@ void closeb_state(csfml_struct *csfml_options,
         }
 }
 
+void slider_state(csfml_struct *csfml_options,
+    game_struct *game,
+    sfVector2i posM)
+{
+    if (posM.x > 452 && posM.x < 797 && posM.y > 120 && posM.y < 134) {
+        if (sfMouse_isButtonPressed(sfMouseLeft) != 1)
+            return;
+        game->general_vol = 100 * (posM.x - 452) / (797 - 452);
+    }
+
+}
+
 void buttons_states(csfml_struct *csfml_options, game_struct *game)
 {
     sfVector2i posM = sfMouse_getPositionRenderWindow(csfml_options->window);
     if (game->paused == 1) {
         closeb_state(csfml_options, game, posM);
         exitb_state(csfml_options, game, posM);
+        slider_state(csfml_options, game, posM);
         return;
     }
     if (game->started == 0) {

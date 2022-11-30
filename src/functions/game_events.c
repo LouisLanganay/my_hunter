@@ -44,6 +44,7 @@ void spawn_birds(csfml_struct *csfml_options,
         }
         birds->alive = 1;
         if (birds->spawn_sound != NULL) {
+            sfMusic_setVolume(birds->spawn_sound, game->general_vol);
             sfMusic_setPlayingOffset(birds->spawn_sound, sfSeconds(0));
             sfMusic_play(birds->spawn_sound);
         }
@@ -57,9 +58,9 @@ csfml_struct *csfml_options,
 game_struct *game)
 {
     buttons_states(csfml_options, game);
-    if (game->started == 0)
-        return enter_range_draw(csfml_options, game);
     if (game->paused == 1)
         return settings_draw(csfml_options, game);
+    if (game->started == 0)
+        return enter_range_draw(csfml_options, game);
     spawn_birds(csfml_options, game, birds);
 }
