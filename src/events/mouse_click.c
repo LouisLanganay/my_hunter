@@ -50,7 +50,7 @@ sfVector2i posM)
             game->started = 1;
             sfMusic_play(game->startb_click);
             sfMusic_play(game->intro_sound);
-            sfSleep(sfSeconds(1));
+            sfSleep(sfSeconds(10));
             game->paused = 0;
         }
 }

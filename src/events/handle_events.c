@@ -21,8 +21,7 @@ vandal_sounds_s *vandal_sounds)
     }
     if (sfMouse_isButtonPressed(sfMouseLeft) == 1)
         mouse_click_left(csfml_options, birds, game, vandal_sounds);
-    if (csfml_options->event.type == sfEvtKeyPressed) {
-        if (csfml_options->event.key.code == sfKeyEscape)
+    if (csfml_options->event.type == sfEvtKeyPressed &&
+        csfml_options->event.key.code == sfKeyEscape)
             pause_game(csfml_options, game);
-    }
 }
