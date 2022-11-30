@@ -51,8 +51,6 @@ void draw(csfml_struct *csfml_options, game_struct *game, birds_list *birds)
     draw_bots(birds, csfml_options);
     draw_croshair(csfml_options, game);
     draw_vandal(csfml_options, game);
-    draw_exit_button(csfml_options, game);
-    draw_close_button(csfml_options, game);
 }
 
 void create_window(csfml_struct *csfml_options,

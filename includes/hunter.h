@@ -44,12 +44,18 @@
         int closeb_hovered;
     } buttons_struct;
 
+    typedef struct scenes_struct {
+        sfTexture* range_texture;
+        sfSprite* range_sprite;
+        sfTexture* settings_texture;
+        sfSprite* settings_sprite;
+    } scenes_struct;
+
     typedef struct game_struct {
         sfMusic* intro_sound;
         sfTexture* crosshair_texture;
         sfSprite* crosshair_sprite;
-        sfTexture* page1_texture;
-        sfSprite* page1_sprite;
+        scenes_struct *scenes;
         buttons_struct *btn;
         sfMusic* b_click;
         sfMusic* b_hover;
@@ -137,6 +143,8 @@
 
     game_struct init_game_struct(game_struct *game);
 
+    vandal_sounds_s init_vandal_sounds(vandal_sounds_s *vandal_sounds);
+
     void pause_game(csfml_struct *csfml_options, game_struct *game);
 
     void draw_resume_button(csfml_struct *csfml_options, game_struct *game);
@@ -148,7 +156,7 @@
     void start_button(csfml_struct *csfml_options,
         game_struct *game,
         sfVector2i posM);
-    
+
     void exit_button(csfml_struct *csfml_options,
         game_struct *game,
         sfVector2i posM);
@@ -158,5 +166,9 @@
         sfVector2i posM);
 
     void buttons_states(csfml_struct *csfml_options, game_struct *game);
+
+    void enter_range_draw(csfml_struct *csfml_options, game_struct *game);
+
+    void settings_draw(csfml_struct *csfml_options, game_struct *game);
 
 #endif
