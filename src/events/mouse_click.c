@@ -49,6 +49,7 @@ int check_buttons_click(csfml_struct *csfml_options,
     if (game->paused == 1) {
         exit_button(csfml_options, game, posM);
         close_button(csfml_options, game, posM);
+        arrow_button(csfml_options, game, posM);
         return 1;
     }
     if (game->started == 0) {

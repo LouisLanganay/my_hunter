@@ -7,6 +7,14 @@
 
 #include "../../includes/hunter.h"
 
+buttons_struct init_buttons_struct_arrow(game_struct *game)
+{
+    game->btn->arrow_texture = sfTexture_createFromFile(
+        "assets/gui/ab.png", NULL);
+    game->btn->arrow_sprite = sfSprite_create();
+    game->btn->arrow_rect = (sfIntRect){0, 0, 25, 50};
+}
+
 buttons_struct init_buttons_struct(game_struct *game)
 {
     game->btn->startb_texture = sfTexture_createFromFile("assets/gui/sb.png",
@@ -27,6 +35,7 @@ buttons_struct init_buttons_struct(game_struct *game)
     game->btn->slider_texture = sfTexture_createFromFile(
         "assets/gui/slider.png", NULL);
     game->btn->slider_sprite = sfSprite_create();
+    init_buttons_struct_arrow(game);
 }
 
 scenes_struct init_scenes_struct(game_struct *game)

@@ -29,6 +29,11 @@ PROJECT_FILES = 	src/functions/create_window.c		\
 					src/init/init_game_struct.c			\
 					src/init/init_vandal_sounds.c		\
 					src/settings/volume.c				\
+					src/functions/states/arrow_button_state.c \
+					src/functions/states/close_button_state.c \
+					src/functions/states/exit_button_state.c \
+					src/functions/states/slider_button_state.c \
+					src/functions/states/start_button_state.c \
 
 SRC	=	lib/my/my_compute_power_rec.c		\
 		lib/my/my_compute_square_root.c	\

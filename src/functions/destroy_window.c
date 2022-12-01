@@ -45,5 +45,6 @@ vandal_sounds_s *vandal_sounds)
         sfMusic_destroy(bird->spawn_sound);
         bird = bird->next;
     }
+    sfClock_destroy(csfml_options->clock);
     destroy_other(csfml_options, birds, game, vandal_sounds);
 }

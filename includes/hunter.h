@@ -44,6 +44,10 @@
         int closeb_hovered;
         sfTexture* slider_texture;
         sfSprite* slider_sprite;
+        sfTexture* arrow_texture;
+        sfSprite* arrow_sprite;
+        sfIntRect arrow_rect;
+        int arrow_hovered;
     } buttons_struct;
 
     typedef struct scenes_struct {
@@ -57,6 +61,7 @@
         sfMusic* intro_sound;
         sfTexture* crosshair_texture;
         sfSprite* crosshair_sprite;
+        sfColor* crosshair_color;
         scenes_struct *scenes;
         buttons_struct *btn;
         sfMusic* b_click;
@@ -64,6 +69,7 @@
         sfText* text;
         sfFont* font;
         sfText* text2;
+        int skip_intro;
         int paused;
         int started;
         int score;
@@ -128,7 +134,7 @@
     csfml_struct *csfml_options,
     game_struct *game);
 
-    int check_arguments(int ac, char **av);
+    int check_arguments(int ac, char **av, game_struct *game);
 
     void game_events(birds_list *birds,
                     csfml_struct *csfml_options,
@@ -154,6 +160,8 @@
 
     void draw_exit_button(csfml_struct *csfml_options, game_struct *game);
 
+    void draw_arrow_button(csfml_struct *csfml_options, game_struct *game);
+
     void draw_close_button(csfml_struct *csfml_options, game_struct *game);
 
     void draw_slider(csfml_struct *csfml_options, game_struct *game);
@@ -170,6 +178,10 @@
         game_struct *game,
         sfVector2i posM);
 
+    void arrow_button(csfml_struct *csfml_options,
+        game_struct *game,
+        sfVector2i posM);
+
     void buttons_states(csfml_struct *csfml_options, game_struct *game);
 
     void enter_range_draw(csfml_struct *csfml_options, game_struct *game);
@@ -180,5 +192,25 @@
         game_struct *game,
         vandal_sounds_s *vandal_sounds,
         birds_list *birds);
+
+    void arrowb_state(csfml_struct *csfml_options,
+    game_struct *game,
+    sfVector2i posM);
+
+    void exitb_state(csfml_struct *csfml_options,
+    game_struct *game,
+    sfVector2i posM);
+
+    void closeb_state(csfml_struct *csfml_options,
+    game_struct *game,
+    sfVector2i posM);
+
+    void sliderb_state(csfml_struct *csfml_options,
+    game_struct *game,
+    sfVector2i posM);
+
+    void startb_state(csfml_struct *csfml_options,
+    game_struct *game,
+    sfVector2i posM);
 
 #endif
