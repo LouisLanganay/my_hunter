@@ -20,4 +20,6 @@ void enter_range_draw(csfml_struct *csfml_options, game_struct *game)
     sfSprite_setPosition(game->btn->startb_sprite, (sfVector2f){255, 470});
     sfRenderWindow_drawSprite(csfml_options->window,
         game->btn->startb_sprite, NULL);
+
+    draw_game_button(csfml_options, game);
 }

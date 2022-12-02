@@ -13,6 +13,15 @@ buttons_struct init_buttons_struct_arrow(game_struct *game)
         "assets/gui/ab.png", NULL);
     game->btn->arrow_sprite = sfSprite_create();
     game->btn->arrow_rect = (sfIntRect){0, 0, 25, 50};
+    game->btn->game_texture = sfTexture_createFromFile(
+        "assets/gui/gb.png", NULL);
+    game->btn->game_sprite = sfSprite_create();
+    game->btn->game_hovered = 0;
+    game->btn->arrow_hovered = 0;
+    game->btn->startb_hovered = 0;
+    game->btn->exitb_hovered = 0;
+    game->btn->closeb_hovered = 0;
+    game->btn->slider_hovered = 0;
 }
 
 buttons_struct init_buttons_struct(game_struct *game)
@@ -21,17 +30,14 @@ buttons_struct init_buttons_struct(game_struct *game)
         NULL);
     game->btn->startb_rect = (sfIntRect){0, 0, 366, 74};
     game->btn->startb_sprite = sfSprite_create();
-    game->btn->startb_hovered = 0;
     game->btn->exitb_texture = sfTexture_createFromFile("assets/gui/eb.png",
         NULL);
     game->btn->exitb_rect = (sfIntRect){0, 0, 395, 74};
     game->btn->exitb_sprite = sfSprite_create();
-    game->btn->exitb_hovered = 0;
     game->btn->closeb_texture = sfTexture_createFromFile("assets/gui/cb.png",
         NULL);
     game->btn->closeb_rect = (sfIntRect){0, 0, 352, 74};
     game->btn->closeb_sprite = sfSprite_create();
-    game->btn->closeb_hovered = 0;
     game->btn->slider_texture = sfTexture_createFromFile(
         "assets/gui/slider.png", NULL);
     game->btn->slider_sprite = sfSprite_create();

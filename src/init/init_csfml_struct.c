@@ -24,6 +24,8 @@ csfml_struct init_struct(csfml_struct *csfml_options)
     csfml_options->intro_texture = sfTexture_createFromFile(
         "./assets/gui/intro_back.png", NULL);
     csfml_options->intro_sprite = sfSprite_create();
+    csfml_options->cursor_arrow = sfCursor_createFromSystem(sfCursorArrow);
+    csfml_options->cursor_hand = sfCursor_createFromSystem(sfCursorHand);
     sfSprite_setTexture(csfml_options->intro_sprite,
         csfml_options->intro_texture, sfTrue);
     sfSprite_setScale(csfml_options->intro_sprite, (sfVector2f){0.6, 0.6});

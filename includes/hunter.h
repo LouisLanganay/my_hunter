@@ -44,10 +44,15 @@
         int closeb_hovered;
         sfTexture* slider_texture;
         sfSprite* slider_sprite;
+        int slider_hovered;
         sfTexture* arrow_texture;
         sfSprite* arrow_sprite;
         sfIntRect arrow_rect;
         int arrow_hovered;
+        sfTexture* game_texture;
+        sfSprite* game_sprite;
+        sfIntRect game_rect;
+        int game_hovered;
     } buttons_struct;
 
     typedef struct scenes_struct {
@@ -106,6 +111,8 @@
         sfTexture* vandal_texture;
         sfSprite* vandal_sprite;
         sfIntRect vandal_rect;
+        sfCursor* cursor_arrow;
+        sfCursor* cursor_hand;
     } csfml_struct;
 
     void create_window(csfml_struct *csfml_options,
@@ -166,6 +173,8 @@
 
     void draw_slider(csfml_struct *csfml_options, game_struct *game);
 
+    void draw_game_button(csfml_struct *csfml_options, game_struct *game);
+
     void start_button(csfml_struct *csfml_options,
         game_struct *game,
         sfVector2i posM);
@@ -212,5 +221,11 @@
     void startb_state(csfml_struct *csfml_options,
     game_struct *game,
     sfVector2i posM);
+
+    void gameb_state(csfml_struct *csfml_options,
+    game_struct *game,
+    sfVector2i posM);
+
+    void mouse_style(csfml_struct *csfml_options, game_struct *game);
 
 #endif

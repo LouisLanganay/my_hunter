@@ -7,6 +7,10 @@
 
 #include "../includes/hunter.h"
 
+#include <SFML/System/Vector2.h>
+#include <SFML/Window/Export.h>
+#include <SFML/Window/Types.h>
+
 void game_end_event(csfml_struct *csfml_options, game_struct *game)
 {
     init_game_struct(game);
@@ -57,10 +61,15 @@ void game_events(birds_list *birds,
 csfml_struct *csfml_options,
 game_struct *game)
 {
-    buttons_states(csfml_options, game);
-    if (game->paused == 1)
-        return settings_draw(csfml_options, game);
-    if (game->started == 0)
-        return enter_range_draw(csfml_options, game);
+    if (game->paused == 1) {
+        buttons_states(csfml_options, game);
+        settings_draw(csfml_options, game);
+        return;
+    }
+    if (game->started == 0) {
+        buttons_states(csfml_options, game);
+        enter_range_draw(csfml_options, game);
+        return;
+    }
     spawn_birds(csfml_options, game, birds);
 }

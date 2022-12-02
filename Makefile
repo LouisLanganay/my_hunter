@@ -7,33 +7,40 @@
 
 include Makefile_colors.mk
 
-PROJECT_FILES = 	src/functions/create_window.c		\
-					src/functions/destroy_window.c		\
-					src/functions/move_rect.c			\
-					src/events/close_window.c			\
-					src/events/handle_events.c			\
-					src/events/mouse_click.c			\
-					src/functions/check_arguments.c		\
-					src/functions/game_events.c			\
-					src/functions/draw/draw_text.c		\
-					src/functions/draw/draw_croshair.c	\
-					src/functions/draw/draw_vandal.c	\
-					src/init/create_bird_list.c			\
-					src/events/pause_game.c				\
-					src/functions/draw/draw_buttons.c	\
-					src/events/buttons.c				\
-					src/functions/buttons_states.c		\
-					src/functions/scenes/enter_range.c	\
-					src/functions/scenes/settings.c		\
-					src/init/init_csfml_struct.c		\
-					src/init/init_game_struct.c			\
-					src/init/init_vandal_sounds.c		\
-					src/settings/volume.c				\
-					src/functions/states/arrow_button_state.c \
-					src/functions/states/close_button_state.c \
-					src/functions/states/exit_button_state.c \
-					src/functions/states/slider_button_state.c \
-					src/functions/states/start_button_state.c \
+PROJECT_FILES = 	src/functions/create_window.c				\
+					src/functions/destroy_window.c				\
+					src/functions/move_rect.c					\
+					src/events/close_window.c					\
+					src/events/handle_events.c					\
+					src/events/mouse_click.c					\
+					src/functions/check_arguments.c				\
+					src/functions/game_events.c					\
+					src/functions/draw/draw_text.c				\
+					src/functions/draw/draw_croshair.c			\
+					src/functions/draw/draw_vandal.c			\
+					src/init/create_bird_list.c					\
+					src/events/pause_game.c						\
+					src/events/buttons.c						\
+					src/functions/buttons_states.c				\
+					src/functions/scenes/enter_range.c			\
+					src/functions/scenes/settings.c				\
+					src/init/init_csfml_struct.c				\
+					src/init/init_game_struct.c					\
+					src/init/init_vandal_sounds.c				\
+					src/settings/volume.c						\
+					src/functions/states/arrow_button_state.c 	\
+					src/functions/states/close_button_state.c 	\
+					src/functions/states/exit_button_state.c 	\
+					src/functions/states/slider_button_state.c 	\
+					src/functions/states/start_button_state.c 	\
+					src/functions/states/game_button_state.c\
+					src/functions/draw/buttons/draw_arrow.c 	\
+					src/functions/draw/buttons/draw_close.c 	\
+					src/functions/draw/buttons/draw_exit.c 		\
+					src/functions/draw/buttons/draw_slider.c 	\
+					src/functions/draw/buttons/draw_resume.c 	\
+					src/functions/draw/buttons/draw_game.c	 	\
+					src/functions/mouse_style.c					\
 
 SRC	=	lib/my/my_compute_power_rec.c		\
 		lib/my/my_compute_square_root.c	\
