@@ -12,12 +12,7 @@ game_struct *game,
 vandal_sounds_s *vandal_sounds,
 birds_list *birds)
 {
-
     sfMusic_setVolume(vandal_sounds->shoot_sound1, game->general_vol);
-    sfMusic_setVolume(vandal_sounds->shoot_sound2, game->general_vol);
-    sfMusic_setVolume(vandal_sounds->shoot_sound3, game->general_vol);
-    sfMusic_setVolume(vandal_sounds->shoot_sound4, game->general_vol);
-    sfMusic_setVolume(vandal_sounds->shoot_sound5, game->general_vol);
 
     sfMusic_setVolume(game->intro_sound, game->general_vol);
     sfMusic_setVolume(game->b_click, game->general_vol);

@@ -10,6 +10,7 @@
 
 int check_arguments(int ac, char **av, game_struct *game)
 {
+    game->skip_intro = 0;
     for (int i = 0; i < ac; i++) {
         if (my_strcmp(av[i], "-h") == 0) {
             my_printf("--------------------\n");

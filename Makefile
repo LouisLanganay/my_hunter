@@ -145,7 +145,7 @@ run_tests: unit_tests
 	gcovr
 
 main:
-	gcc -o my_hunter ${PATH_MAIN} \
+	gcc -g -o my_hunter ${PATH_MAIN} \
 	${PROJECT_FILES} -I${PATH_INCLUDE} -L${PATH_LIB} -l${LIB_NAME} \
 	-l csfml-window -l csfml-graphics -l csfml-system -l csfml-audio -lm
 

@@ -66,8 +66,9 @@ sfVector2i posM)
     (posM.y >= posB.y && posM.y <= posB.y + game->btn->arrow_rect.height)) {
             sfMusic_setPlayingOffset(game->b_click, sfSeconds(0));
             sfMusic_play(game->b_click);
-            sfColor colors[] = {sfWhite, sfRed, sfBlue, sfGreen, sfYellow};
-            sfSprite_setColor(game->crosshair_sprite, colors[rand() % 5]);
+            sfColor colors[] = {sfWhite, sfRed, sfBlue, sfGreen, sfYellow,
+                sfMagenta, sfCyan, sfBlack};
+            sfSprite_setColor(game->crosshair_sprite, colors[rand() % 8]);
             while (sfMouse_isButtonPressed(sfMouseLeft) == sfTrue) {
                 sfSleep(sfSeconds(0.01));
             }
