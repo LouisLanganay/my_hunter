@@ -71,9 +71,9 @@ void create_window(csfml_struct *csfml_options,
         if (seconds > 0.01) {
             handle_events(csfml_options, birds, game, vandal_sounds);
             set_textures(csfml_options, birds, game);
+            draw(csfml_options, game, birds);
             sfClock_restart(csfml_options->clock);
         }
-        draw(csfml_options, game, birds);
         game_events(birds, csfml_options, game);
         set_musics_volume(csfml_options, game, vandal_sounds, birds);
         sfRenderWindow_display(csfml_options->window);

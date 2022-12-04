@@ -26,7 +26,14 @@ To compile this project run the following command at `.`
 Then run the game:
 
 ```bash
-    ./my_hunter
+    ./my_hunter -h
+--------------------
+USAGE: ./my_hunter
+
+FLAGS:
+        -h: display this help
+        --skip-intro: skip the intro
+--------------------
 ```
 
 ## ToDo
@@ -61,9 +68,10 @@ Then run the game:
 - [x] Score
 - [x] Bot remaining
 - [x] Block window size
+- [X] Change cursor style
 - Settings scene:
 - [x] Volume
-- [ ] Crosshair color
+- [x] Crosshair color
 
 ## Authors
 
