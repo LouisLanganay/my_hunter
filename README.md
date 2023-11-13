@@ -36,6 +36,9 @@ FLAGS:
 --------------------
 ```
 
+![image](https://github.com/LouisLanganay/my_hunter/assets/114762819/8ef41149-dc25-49c8-96bc-d19f12e72aa0)
+![image](https://github.com/LouisLanganay/my_hunter/assets/114762819/7ceae3c6-a909-4f97-be41-6d9cc28d1d68)
+
 ## ToDo
 
 ### MUST
